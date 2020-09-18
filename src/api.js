@@ -1,4 +1,11 @@
-const fetchAPI = {
+const api = {
+  getOneTraveler(id) {
+    const soloTravelerDataApi = `https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/${id}`
+    const promise = fetch(soloTravelerDataApi)
+      .then (response => response.json())
+    return promise;
+  },
+
   getAllTravelers() {
     const travelerDataApi = 'https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers'
     const promise = fetch(travelerDataApi)
@@ -20,10 +27,7 @@ const fetchAPI = {
     return promise;
   },
 
-  // getOneTraveler(id) {
-  //   const soloTravelerDataApi = 'https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/<id>id<id> '
-  //   const promise = fetch(soloTravelerDataApi)
-  //     .then (response => response.json())
-  //   return promise;
-  // }, need advice/research with this one. not actually sure if this works like this, gonna have to double check.
+
+
+
 }
