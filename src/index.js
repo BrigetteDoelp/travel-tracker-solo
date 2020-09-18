@@ -12,6 +12,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 import api from './api.js'
 
+let userID = Math.floor((Math.random() * 50) + 1);
 let travelers;
 let trips;
 let destinations;
