@@ -29,7 +29,7 @@ const api = {
 
   //post new trip https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips
   //post new destination https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations
-  //post (modify) single trip https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/updateTrip	
+  //post (modify) single trip https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/updateTrip
 
 
 }
