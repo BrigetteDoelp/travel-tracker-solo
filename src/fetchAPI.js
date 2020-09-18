@@ -13,6 +13,12 @@ const fetchAPI = {
     return promise;
   },
 
+  getAllDestinations() {
+    const destinationDataApi = 'https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations'
+    const promise = fetch(destinationDataApi)
+      .then (response => response.json())
+    return promise;
+  },
 
 
 }
