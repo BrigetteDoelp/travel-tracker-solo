@@ -46,7 +46,7 @@ function onLoadContent() {
 function getTravelersTrips(solo, trippys) {
   let soloTraveler = new Traveler(traveler, trips)
   soloTraveler.findTrips()
-  console.log(soloTraveler.pastTrips())
+  console.log(soloTraveler.travelersTrips)
 }
 
 // travlers.maps
