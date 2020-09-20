@@ -4,7 +4,7 @@ const travelerData = [
   {"id":3,"name":"Sibby Dawidowitsch","travelerType":"shopper"},
   {"id":4,"name":"Leila Thebeaud","travelerType":"photographer"},
   {"id":5,"name":"Tiffy Grout","travelerType":"thrill-seeker"},
-  {"id":6,"name":"Laverna Flawith","travelerType":"shopper"}
+  {"id":12,"name":"Laverna Flawith","travelerType":"shopper"}
 ];
 
 export default travelerData

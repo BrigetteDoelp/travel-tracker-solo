@@ -14,8 +14,10 @@ const tripsData = [
   {"id":13,"userID":5,"destinationID":12,"travelers":1,"date":"2021/02/12","duration":11,"status":"approved","suggestedActivities":[]},
   {"id":14,"userID":5,"destinationID":35,"travelers":1,"date":"2019/09/24","duration":10,"status":"pending","suggestedActivities":[]},
   {"id":15,"userID":5,"destinationID":13,"travelers":3,"date":"2020/07/04","duration":6,"status":"approved","suggestedActivities":[]},
-  {"id":16,"userID":6,"destinationID":27,"travelers":1,"date":"2019/11/20","duration":9,"status":"pending","suggestedActivities":[]},
-  {"id":17,"userID":6,"destinationID":31,"travelers":1,"date":"2019/10/30","duration":20,"status":"approved","suggestedActivities":[]},
+  {"id":16,"userID":12,"destinationID":27,"travelers":1,"date":"2019/11/20","duration":9,"status":"pending","suggestedActivities":[]},
+  {"id":17,"userID":12,"destinationID":31,"travelers":1,"date":"2019/10/30","duration":20,"status":"approved","suggestedActivities":[]},
+  {"id":21,"userID":12,"destinationID":10,"travelers":1,"date":"2020/01/28","duration":18,"status":"approved","suggestedActivities":[]},
+  {"id":193,"userID":12,"destinationID":35,"travelers":1,"date":"2020/11/09","duration":19,"status":"approved","suggestedActivities":[]},
 ]
 
 export default tripsData
