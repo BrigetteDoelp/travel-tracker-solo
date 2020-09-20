@@ -11,34 +11,47 @@ import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
-import updateDOM from './domUpdate.js'
-import api from './api.js'
+import Traveler from './Traveler.js';
+
+import updateDOM from './domUpdate.js';
+import api from './api.js';
 
 let userID = Math.floor((Math.random() * 50) + 1);
 let travelers;
+let traveler;
 let trips;
 let destinations;
 
 window.onload = onLoadContent;
+// window.onload = fuck;
+
 
 function onLoadContent() {
-  let promise1 = api.fetchAllTravelers();
-  let promise2 = api.fetchAllTrips();
-  let promise3 = api.fetchAllDestinations();
-  console.log(moment().format('MMMM Do YYYY'));
+  let userID = Math.floor((Math.random() * 50) + 1);
+  console.log(userID)
+
+  let promise1 = api.fetchAllTrips();
+  let promise2 = api.fetchAllDestinations();
+  let promise3 = api.fetchOneTraveler(userID)
 
   Promise.all([promise1, promise2, promise3])
     .then(values => {
       console.log(values)
-      travelers = values[0].travelers;
-      trips = values[1].trips;
+      traveler = values[2]
+      trips = values[0].trips;
       destinations = values[2].destinations;
+      frick()
     })
 }
 
 //GENERAL FUNCTIONS
+function frick(solo, trippys) {
+  let soloTraveler = new Traveler(traveler, trips)
+  soloTraveler.findTrips()
+  console.log(soloTraveler.pastTrips())
+}
 
-
+// travlers.maps
 
 
 
