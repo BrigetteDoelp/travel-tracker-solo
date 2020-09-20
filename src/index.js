@@ -23,8 +23,6 @@ let trips;
 let destinations;
 
 window.onload = onLoadContent;
-// window.onload = fuck;
-
 
 function onLoadContent() {
   let userID = Math.floor((Math.random() * 50) + 1);
@@ -40,12 +38,12 @@ function onLoadContent() {
       traveler = values[2]
       trips = values[0].trips;
       destinations = values[2].destinations;
-      frick()
+      getTravelersTrips()
     })
 }
 
 //GENERAL FUNCTIONS
-function frick(solo, trippys) {
+function getTravelersTrips(solo, trippys) {
   let soloTraveler = new Traveler(traveler, trips)
   soloTraveler.findTrips()
   console.log(soloTraveler.pastTrips())

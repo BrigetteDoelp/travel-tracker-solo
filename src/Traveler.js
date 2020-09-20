@@ -20,10 +20,10 @@ class Traveler {
     console.log(today)
     this.findTrips()
     console.log(this.travelersTrips)
-    let ass = this.travelersTrips.filter(trip => {
+    let singleTravelerTrips = this.travelersTrips.filter(trip => {
       moment(trip.date).add(trip.duration, 'day').isBefore(today)
   })
-  console.log(ass)
+  console.log(singleTravelerTrips)
 
   }
 
