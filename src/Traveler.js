@@ -31,19 +31,15 @@ class Traveler {
   futureTrips() {
     let today = moment(Date.now()).format('YYYY/MM/DD')
     let futureTrips = this.travelersTrips.filter(trip => {
-      if (moment(trip.date).add(trip.duration, 'day').isAfter(today && trip.status != 'pending')) {
+      if (moment(trip.date).add(trip.duration, 'day').isAfter(today)) {
         return trip
       }
     })
-    return futureTrips
+    let notPendingTrips = futureTrips.filter(trip => {
+      return trip.status === 'approved'
+    })
+    return notPendingTrips
   }
-
-  // futureTrips = this.travelersTrips.filter(trip => {
-  //   if (moment(trip.date).add(trip.duration, 'day').isAfter(today && trip.status === "approved")) {
-  //     return trip
-  //   }
-  // })
-  // return futureTrips
 
   pendingTrips() {
     let pendingTrips = this.travelersTrips.filter(trip => {
