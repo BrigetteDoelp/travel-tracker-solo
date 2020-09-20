@@ -18,13 +18,15 @@ class Traveler {
     return pastTrips
   }
 
-  // presentTrips() {
-  //   let today = moment(Date.now()).format('YYYY/MM/DD')
-  //   let presentTrips = this.travelersTrips.filter(trip => {
-  //     return moment(trip.date).add(trip.duration, 'day').isBefore(today)
-  //   })
-  //   return presentTrips
-  // }
+  presentTrips() {
+    let today = moment(Date.now()).format('YYYY/MM/DD')
+    let presentTrips = this.travelersTrips.filter(trip => {
+      if (moment(trip.date).isBefore(today) && moment(trip.date).add(trip.duration, 'day').isAfter(today)) {
+        return trip
+      }
+    })
+    return presentTrips
+  }
 
   futureTrips() {
     let today = moment(Date.now()).format('YYYY/MM/DD')
