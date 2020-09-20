@@ -18,11 +18,31 @@ class Traveler {
     return pastTrips
   }
 
+  // presentTrips() {
+  //   let today = moment(Date.now()).format('YYYY/MM/DD')
+  //   let presentTrips = this.travelersTrips.filter(trip => {
+  //     return moment(trip.date).add(trip.duration, 'day').isBefore(today)
+  //   })
+  //   return presentTrips
+  // }
+
   futureTrips() {
     let today = moment(Date.now()).format('YYYY/MM/DD')
-    this.findTrips()
-
+    let futureTrips = this.travelersTrips.filter(trip => {
+      return moment(trip.date).add(trip.duration, 'day').isAfter(today)
+    })
+    return futureTrips
   }
+
+  pendingTrips() {
+    let pendingTrips = this.travelersTrips.filter(trip => {
+      return trip.status === 'pending'
+    })
+    return pendingTrips
+  }
+
+
+
 
 };
 export default Traveler
