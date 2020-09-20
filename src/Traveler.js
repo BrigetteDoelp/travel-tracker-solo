@@ -17,15 +17,11 @@ class Traveler {
 
   pastTrips() {
     let today = moment('2020/05/15').format('YYYY/MM/DD')
-    console.log(today)
     this.findTrips()
-    console.log(this.travelersTrips)
     let singleTravelerTrips = this.travelersTrips.filter(trip => {
-      moment(trip.date).add(trip.duration, 'day').isBefore(today)
-  })
-  console.log(singleTravelerTrips)
-
+      return moment(trip.date).add(trip.duration, 'day').isBefore(today)
+    })
   }
 
-}
+};
 export default Traveler
