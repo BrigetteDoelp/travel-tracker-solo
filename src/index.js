@@ -34,7 +34,7 @@ function onLoadContent() {
 
   Promise.all([promise0, promise1, promise2])
     .then(values => {
-      console.log(values)
+      // console.log(values)
       trips = values[0].trips;
       destinations = values[1].destinations;
       traveler = values[2]
@@ -46,7 +46,7 @@ function onLoadContent() {
 function generateTraveler() {
   let soloTraveler = new Traveler(traveler)
   soloTraveler.travelersTrips = trips.filter(trip => trip.userID === soloTraveler.id)
-  console.log(soloTraveler.pendingTrips())
+  console.log(soloTraveler.futureTrips())
   console.log(soloTraveler.travelersTrips)
 }
 
