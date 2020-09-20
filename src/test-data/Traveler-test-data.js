@@ -1,4 +1,4 @@
-let travelerData = [
+const travelerData = [
   {"id":1,"name":"Ham Leadbeater","travelerType":"relaxer"},
   {"id":2,"name":"Rachael Vaughten","travelerType":"thrill-seeker"},
   {"id":3,"name":"Sibby Dawidowitsch","travelerType":"shopper"},
@@ -6,3 +6,5 @@ let travelerData = [
   {"id":5,"name":"Tiffy Grout","travelerType":"thrill-seeker"},
   {"id":6,"name":"Laverna Flawith","travelerType":"shopper"}
 ];
+
+export default travelerData
