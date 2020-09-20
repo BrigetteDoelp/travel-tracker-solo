@@ -46,7 +46,7 @@ function onLoadContent() {
 function generateTraveler() {
   let soloTraveler = new Traveler(traveler)
   soloTraveler.travelersTrips = trips.filter(trip => trip.userID === soloTraveler.id)
-  console.log(soloTraveler)
+  console.log(soloTraveler.pendingTrips())
   console.log(soloTraveler.travelersTrips)
 }
 
