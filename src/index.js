@@ -16,7 +16,7 @@ import Traveler from './Traveler.js';
 import updateDOM from './domUpdate.js';
 import api from './api.js';
 
-let userID = Math.floor((Math.random() * 50) + 1);
+// let userID = Math.floor((Math.random() * 50) + 1);
 let travelers;
 let traveler;
 let trips;
@@ -28,28 +28,34 @@ function onLoadContent() {
   let userID = Math.floor((Math.random() * 50) + 1);
   console.log(userID)
 
-  let promise1 = api.fetchAllTrips();
-  let promise2 = api.fetchAllDestinations();
-  let promise3 = api.fetchOneTraveler(userID)
+  let promise0 = api.fetchAllTrips();
+  let promise1 = api.fetchAllDestinations();
+  let promise2 = api.fetchOneTraveler(userID)
 
-  Promise.all([promise1, promise2, promise3])
+  Promise.all([promise0, promise1, promise2])
     .then(values => {
       console.log(values)
-      traveler = values[2]
       trips = values[0].trips;
-      destinations = values[2].destinations;
-      getTravelersTrips()
+      destinations = values[1].destinations;
+      traveler = values[2]
+      generateTraveler()
     })
 }
 
 //GENERAL FUNCTIONS
-function getTravelersTrips(solo, trippys) {
-  let soloTraveler = new Traveler(traveler, trips)
-  soloTraveler.findTrips()
-  console.log(soloTraveler.travelersTrips)
+function generateTraveler() {
+  let soloTraveler = new Traveler(traveler)
+  soloTraveler.travelersTrips = trips.filter(trip => trip.userID === soloTraveler.id)
+  console.log(soloTraveler)
 }
 
-// travlers.maps
+// function getTravelersTrips() {
+//   soloTraveler.findTrips()
+//   console.log(soloTraveler.travelersTrips)
+//   // console.log(soloTraveler.findTrips())
+//   console.log(soloTraveler.pastTrips())
+// }
+
 
 
 
