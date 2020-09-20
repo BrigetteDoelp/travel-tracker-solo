@@ -19,9 +19,21 @@ describe('Traveler', () => {
     expect(traveler).to.be.an.instanceof(Traveler);
   })
 
-  
+  it('should be able to check for past trips', () => {
+    console.log(traveler.pastTrips())
+  })
 
+  it('should be able to check for present trips', () => {
 
+  })
+
+  it('should be able to check for future trips', () => {
+
+  })
+
+  it('should be able to check for pending trips', () => {
+    
+  })
 
 })
 
