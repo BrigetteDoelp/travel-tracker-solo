@@ -12,7 +12,7 @@ class Traveler {
   }
 
   findTrips() {
-    this.travelersTrips = this.allTrips.filter(trip => trip.userID === this.id)
+    return this.travelersTrips = this.allTrips.filter(trip => trip.userID === this.id)
   };
 
   pastTrips() {
