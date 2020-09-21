@@ -49,8 +49,10 @@ class Traveler {
   }
 
   yearOfTrips() {
+    let today = new Date()
+    let thisYear = today.getFullYear()
     let thisYearsTrips = this.travelersTrips.filter(trip => {
-      return trip.date.includes('2020')
+      return trip.date.includes(thisYear)
     })
     return thisYearsTrips
   }
