@@ -57,6 +57,10 @@ class Traveler {
     return thisYearsTrips
   }
 
+  moneySpent() {
+    
+  }
+
 
 
 
