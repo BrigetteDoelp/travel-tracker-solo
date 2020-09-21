@@ -45,10 +45,37 @@ function onLoadContent() {
 //GENERAL FUNCTIONS
 function generateTraveler() {
   let soloTraveler = new Traveler(traveler)
-  soloTraveler.travelersTrips = trips.filter(trip => trip.userID === soloTraveler.id)
-  console.log(soloTraveler.yearOfTrips())
-  console.log(soloTraveler.travelersTrips)
+  generateTravelerTripData(soloTraveler)
+  // console.log(soloTraveler.travelersDestinations)
+  return soloTraveler
 }
+
+function generateTravelerTripData(traveler) {
+  let travelerDestinations = [];
+  traveler.travelersDestinations = travelerDestinations
+  traveler.travelersTrips = trips.filter(trip => trip.userID === traveler.id)
+  let travelersTrips = traveler.travelersTrips
+  destinations.forEach(destination => {
+    travelersTrips.forEach(trip => {
+      if (destination.id === trip.destinationID) {
+        travelerDestinations.push(destination)
+      }
+    })
+  })
+}
+
+function generateTripCosts() {
+  let soloTraveler = generateTraveler()
+  let yearOfTrips = soloTraveler.yearOfTrips()
+  let totalCosts = yearOfTrips.reduce((acc, trip) => {
+
+    return acc
+  }, 0)
+  // console.log(yearOfTrips)
+}
+
+
+
 
 // function getTravelersTrips() {
 //   soloTraveler.findTrips()
