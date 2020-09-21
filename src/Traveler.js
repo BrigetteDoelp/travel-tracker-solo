@@ -1,13 +1,13 @@
 // const moment = require('moment')
 const moment = require('moment');
 
-
 class Traveler {
   constructor(traveler) {
     this.id = traveler.id;
     this.name = traveler.name;
     this.travelerType = traveler.travelerType;
     this.travelersTrips = [];
+    this.travelersDestinations = [];
   }
 
   pastTrips() {
@@ -55,10 +55,6 @@ class Traveler {
       return trip.date.includes(thisYear)
     })
     return thisYearsTrips
-  }
-
-  moneySpent() {
-    
   }
 
 
