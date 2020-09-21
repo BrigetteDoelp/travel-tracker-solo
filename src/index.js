@@ -46,7 +46,6 @@ function onLoadContent() {
 function generateTraveler() {
   let soloTraveler = new Traveler(traveler)
   generateTravelerTripData(soloTraveler)
-  // console.log(soloTraveler.travelersDestinations)
   return soloTraveler
 }
 
@@ -71,18 +70,8 @@ function generateTripCosts() {
 
     return acc
   }, 0)
-  // console.log(yearOfTrips)
 }
 
-
-
-
-// function getTravelersTrips() {
-//   soloTraveler.findTrips()
-//   console.log(soloTraveler.travelersTrips)
-//   // console.log(soloTraveler.findTrips())
-//   console.log(soloTraveler.pastTrips())
-// }
 
 
 

@@ -57,8 +57,5 @@ class Traveler {
     return thisYearsTrips
   }
 
-
-
-
 };
 export default Traveler
