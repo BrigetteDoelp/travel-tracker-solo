@@ -48,6 +48,13 @@ class Traveler {
     return pendingTrips
   }
 
+  yearOfTrips() {
+    let thisYearsTrips = this.travelersTrips.filter(trip => {
+      return trip.date.includes('2020')
+    })
+    return thisYearsTrips
+  }
+
 
 
 
