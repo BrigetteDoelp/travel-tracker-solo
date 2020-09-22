@@ -20,15 +20,21 @@ let travelers;
 let traveler;
 let trips;
 let destinations;
+let userID = Math.floor((Math.random() * 50) + 1);
 let submitBtn = document.querySelector('.submit-button');
 let errorMessage = document.querySelector('.error-message');
+let dateInput = document.querySelector('.date-input')
+let dropdown = document.querySelector('.dropdown');
+let durationInput = document.querySelector('.duration-input');
+let travelerInput = document.querySelector('.traveler-input');
+
+
 
 window.onload = onLoadData;
 
 submitBtn.addEventListener('click', submitTrip);
 
 function onLoadData() {
-  let userID = Math.floor((Math.random() * 50) + 1);
   let promise0 = api.fetchAllTrips();
   let promise1 = api.fetchAllDestinations();
   let promise2 = api.fetchOneTraveler(userID);
@@ -39,7 +45,7 @@ function onLoadData() {
       destinations = values[1].destinations;
       traveler = values[2]
       let newTraveler = generateTraveler()
-      // console.log(newTraveler.pastTrips());
+
 
       onLoadDisplay(newTraveler, destinations)
     })
@@ -58,11 +64,12 @@ function onLoadDisplay(traveler, destinations) {
 function submitTrip() {
   if(validateDateEntry() && validateDuration() && validateTravelers() && validateDestination() === true) {
     let newTrip = generateNewTrip()
-    //post the new trip here!!!
+    console.log(newTrip)
     errorMessage.classList.add('hidden')
   } else {
     errorMessage.classList.remove('hidden')
   }
+
 }
 
 function generateTraveler() {
@@ -121,15 +128,25 @@ function generateTripCosts(traveler) {
 }
 
 function generateNewTrip() {
+  let trip = {
+    'id': Math.floor((Math.random() * 100) + 50),
+    'userID': userID,
+    "destinationID": parseInt(dropdown.value),
+    "travelers": parseInt(travelerInput.value),
+    "date": dateInput.value,
+    "duration": parseInt(durationInput.value),
+    "status": 'pending',
+    "suggestedActivities": []
+  }
   //create a new trip object!
 
 //if the validate functions all evaluate to true, run the thingy
 //if not, dont and display error knight
-
+  return trip
 }
 
 function validateDateEntry() {
-  let dateInput = document.querySelector('.date-input')
+
   if(moment(dateInput.value)._isValid || moment(dateInput.value).isAfter(moment(Date.now()))) {
     return true
   } else {
@@ -138,7 +155,6 @@ function validateDateEntry() {
 }
 
 function validateDuration() {
-  let durationInput = document.querySelector('.duration-input');
   if(typeof durationInput.value == 'number' || durationInput.value > 1) {
     return true
   } else {
@@ -147,7 +163,6 @@ function validateDuration() {
 }
 
 function validateTravelers() {
-  let travelerInput = document.querySelector('.traveler-input');
   if(typeof travelerInput.value == 'number' || travelerInput.value > 0) {
     return true
   } else {
@@ -156,7 +171,6 @@ function validateTravelers() {
 }
 
 function validateDestination() {
-  let dropdown = document.querySelector('.dropdown');
   if(dropdown.value == 'question') {
     return false
   } else {
