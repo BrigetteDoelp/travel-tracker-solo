@@ -17,7 +17,10 @@ h3 {
 }
 
 .past-trips, .present-trips, .future-trips, .pending-trips, .book-trip-area {
-  border: 2px black solid;
+  border: none;
+  background: hsla(30, 23%, 60%, 1);
+  border-radius: 1em;
+  margin: .5em;
 }
 
 .past-trips {
