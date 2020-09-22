@@ -9,8 +9,8 @@ class Trip {
     this.duration = tripData.duration;
     this.status = tripData.status || 'pending';
     this.suggestedActivities = [];
-
   }
+
 }
 
 export default Trip
