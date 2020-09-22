@@ -34,6 +34,7 @@ function onLoadData() {
   let promise2 = api.fetchOneTraveler(userID);
   Promise.all([promise0, promise1, promise2])
     .then(values => {
+      console.log(values)
       trips = values[0].trips;
       destinations = values[1].destinations;
       traveler = values[2]
@@ -52,7 +53,7 @@ function onLoadDisplay(traveler) {
 }
 
 function submitTrip() {
-  console.log(validateDateEntry())
+  console.log(validateDuration())
 }
 
 function generateTraveler() {
@@ -129,10 +130,12 @@ function validateDateEntry() {
 function validateDuration() {
   let validNum;
   let durationInput = document.querySelector('.duration-input');
-
-  if(typeof durationInput.value == 'number' && durationInput.value > 1) {
+  if(typeof durationInput.value == 'number' || durationInput.value > 1) {
     validNum = true
+  } else {
+    validNum = false
   }
+  return validNum
 }
 
 function validateTravelers() {
