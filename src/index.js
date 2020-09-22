@@ -12,8 +12,7 @@ import './images/turing-logo.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 import Traveler from './Traveler.js';
-
-import updateDOM from './domUpdate.js';
+import updateDom from './domUpdate.js';
 import api from './api.js';
 
 // let userID = Math.floor((Math.random() * 50) + 1);
@@ -22,22 +21,29 @@ let traveler;
 let trips;
 let destinations;
 
-window.onload = onLoadContent;
+window.onload = onLoadData;
 
-function onLoadContent() {
+function onLoadData() {
   let userID = Math.floor((Math.random() * 50) + 1);
-
   let promise0 = api.fetchAllTrips();
   let promise1 = api.fetchAllDestinations();
   let promise2 = api.fetchOneTraveler(userID);
-
   Promise.all([promise0, promise1, promise2])
     .then(values => {
       trips = values[0].trips;
       destinations = values[1].destinations;
       traveler = values[2]
-      generateTraveler()
+      let newTraveler = generateTraveler()
+      // console.log(newTraveler.pastTrips());
+      onLoadDisplay(newTraveler)
     })
+}
+
+function onLoadDisplay(traveler) {
+  updateDom.updatePastTrips(traveler)
+  updateDom.updatePresentTrips(traveler)
+  updateDom.updateFutureTrips(traveler)
+  updateDom.updatePendingTrips(traveler)
 }
 
 function generateTraveler() {
