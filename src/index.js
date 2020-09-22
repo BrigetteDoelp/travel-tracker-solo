@@ -12,7 +12,6 @@ import './images/turing-logo.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 import Traveler from './Traveler.js';
-// import Trip from './Traveler.js';
 import updateDom from './domUpdate.js';
 import api from './api.js';
 
@@ -57,10 +56,13 @@ function onLoadDisplay(traveler, destinations) {
 }
 
 function submitTrip() {
-  validateDateEntry()
-  validateDuration()
-  validateTravelers()
-  validateDestination()
+  if(validateDateEntry() && validateDuration() && validateTravelers() && validateDestination() === true) {
+    let newTrip = generateNewTrip()
+    //post the new trip here!!!
+    errorMessage.classList.add('hidden')
+  } else {
+    errorMessage.classList.remove('hidden')
+  }
 }
 
 function generateTraveler() {
@@ -119,43 +121,46 @@ function generateTripCosts(traveler) {
 }
 
 function generateNewTrip() {
+  //create a new trip object!
 
+//if the validate functions all evaluate to true, run the thingy
+//if not, dont and display error knight
 
 }
 
 function validateDateEntry() {
   let dateInput = document.querySelector('.date-input')
   if(moment(dateInput.value)._isValid || moment(dateInput.value).isAfter(moment(Date.now()))) {
-    errorMessage.classList.add('hidden')
+    return true
   } else {
-    errorMessage.classList.remove('hidden')
+    return false
   }
 }
 
 function validateDuration() {
   let durationInput = document.querySelector('.duration-input');
   if(typeof durationInput.value == 'number' || durationInput.value > 1) {
-    errorMessage.classList.add('hidden')
+    return true
   } else {
-    errorMessage.classList.remove('hidden')
+    return false
   }
 }
 
 function validateTravelers() {
   let travelerInput = document.querySelector('.traveler-input');
   if(typeof travelerInput.value == 'number' || travelerInput.value > 0) {
-    errorMessage.classList.add('hidden')
+    return true
   } else {
-    errorMessage.classList.remove('hidden')
+    return false
   }
 }
 
 function validateDestination() {
   let dropdown = document.querySelector('.dropdown');
   if(dropdown.value == 'question') {
-    errorMessage.classList.remove('hidden')
+    return false
   } else {
-    errorMessage.classList.add('hidden')
+    return true
   }
 }
 
