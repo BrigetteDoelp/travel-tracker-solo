@@ -118,13 +118,26 @@ function generateNewTrip() {
 function validateDateEntry() {
   let validDate;
   let dateInput = document.querySelector('.date-input')
-
   if(moment(dateInput.value)._isValid || moment(dateInput.value).isAfter(moment(Date.now()))) {
     validDate = true
   } else {
     validDate = false
   }
   return validDate
+}
+
+function validateDuration() {
+  let validNum;
+  let durationInput = document.querySelector('.duration-input');
+
+  if(typeof durationInput.value == 'number' && durationInput.value > 1) {
+    validNum = true
+  }
+}
+
+function validateTravelers() {
+  let travelerInput = document.querySelector('.traveler-input');
+
 }
 
 
