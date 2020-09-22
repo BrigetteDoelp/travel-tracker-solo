@@ -41,16 +41,19 @@ function onLoadData() {
       traveler = values[2]
       let newTraveler = generateTraveler()
       // console.log(newTraveler.pastTrips());
-      onLoadDisplay(newTraveler)
+
+      onLoadDisplay(newTraveler, destinations)
     })
 }
 
-function onLoadDisplay(traveler) {
+function onLoadDisplay(traveler, destinations) {
   updateDom.welcomeMessage(traveler);
   updateDom.updatePastTrips(traveler);
   updateDom.updatePresentTrips(traveler);
   updateDom.updateFutureTrips(traveler);
   updateDom.updatePendingTrips(traveler);
+  updateDom.generateDestinationList(destinations);
+
 }
 
 function submitTrip() {
