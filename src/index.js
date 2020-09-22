@@ -12,6 +12,7 @@ import './images/turing-logo.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 import Traveler from './Traveler.js';
+import Trip from './Traveler.js';
 import updateDom from './domUpdate.js';
 import api from './api.js';
 
@@ -101,3 +102,19 @@ function generateTripCosts(traveler) {
   let includingAgentFee = (totalSpent * 1.1);
   return includingAgentFee
 }
+
+function generateNewTrip() {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/// END OF THE JAVASCRIPT ///
