@@ -46,6 +46,10 @@ function onLoadContent() {
 function generateTraveler() {
   let soloTraveler = new Traveler(traveler)
   generateTravelerTripData(soloTraveler)
+  findYearOfDestinations(soloTraveler)
+  // generateTripCosts(soloTraveler)
+  console.log(soloTraveler.yearOfTrips())
+  console.log(generateTripCosts(soloTraveler))
   return soloTraveler
 }
 
@@ -63,22 +67,37 @@ function generateTravelerTripData(traveler) {
   })
 }
 
-function generateTripCosts() {
-  let soloTraveler = generateTraveler()
-  let yearOfTrips = soloTraveler.yearOfTrips()
-  let totalCosts = yearOfTrips.reduce((acc, trip) => {
-
-    return acc
-  }, 0)
+function findYearOfDestinations(traveler) {
+  let yearOfTrips = traveler.yearOfTrips()
+  let allDestinations = traveler.travelersDestinations
+  let thisYearsDestinations = [];
+  allDestinations.forEach(destination => {
+    yearOfTrips.forEach(trip => {
+      if (destination.id === trip.destinationID) {
+        thisYearsDestinations.push(destination)
+      }
+    })
+  })
+  return thisYearsDestinations
 }
 
-
-
-
-
-
-
-
+function generateTripCosts(traveler) {
+  let trips = traveler.yearOfTrips()
+  let destinations = findYearOfDestinations(traveler)
+  let totalSpent = destinations.reduce((acc, destination) => {
+    let lodging;
+    let lodgingAndFlight;
+    let totalCostsForAll;
+    trips.forEach(trip => {
+      lodging = (destination.estimatedLodgingCostPerDay * trip.duration)
+      lodgingAndFlight = (lodging + destination.estimatedFlightCostPerPerson)
+      totalCostsForAll = (lodgingAndFlight * trip.travelers)
+    })
+    acc += totalCostsForAll
+    return acc
+  }, 0)
+  return totalSpent
+}
 
 
 
