@@ -40,10 +40,11 @@ function onLoadData() {
 }
 
 function onLoadDisplay(traveler) {
-  updateDom.updatePastTrips(traveler)
-  updateDom.updatePresentTrips(traveler)
-  updateDom.updateFutureTrips(traveler)
-  updateDom.updatePendingTrips(traveler)
+  updateDom.welcomeMessage(traveler);
+  updateDom.updatePastTrips(traveler);
+  updateDom.updatePresentTrips(traveler);
+  updateDom.updateFutureTrips(traveler);
+  updateDom.updatePendingTrips(traveler);
 }
 
 function generateTraveler() {
