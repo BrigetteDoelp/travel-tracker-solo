@@ -12,7 +12,6 @@ import './images/turing-logo.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 import Traveler from './Traveler.js';
-// import Trip from './Traveler.js';
 import updateDom from './domUpdate.js';
 import api from './api.js';
 
@@ -21,7 +20,8 @@ let travelers;
 let traveler;
 let trips;
 let destinations;
-let submitBtn = document.querySelector('.submit-button')
+let submitBtn = document.querySelector('.submit-button');
+let errorMessage = document.querySelector('.error-message');
 
 window.onload = onLoadData;
 
@@ -40,20 +40,29 @@ function onLoadData() {
       traveler = values[2]
       let newTraveler = generateTraveler()
       // console.log(newTraveler.pastTrips());
-      onLoadDisplay(newTraveler)
+
+      onLoadDisplay(newTraveler, destinations)
     })
 }
 
-function onLoadDisplay(traveler) {
+function onLoadDisplay(traveler, destinations) {
   updateDom.welcomeMessage(traveler);
   updateDom.updatePastTrips(traveler);
   updateDom.updatePresentTrips(traveler);
   updateDom.updateFutureTrips(traveler);
   updateDom.updatePendingTrips(traveler);
+  updateDom.generateDestinationList(destinations);
+
 }
 
 function submitTrip() {
-  console.log(validateDateEntry(), validateDuration(), validateTravelers())
+  if(validateDateEntry() && validateDuration() && validateTravelers() && validateDestination() === true) {
+    let newTrip = generateNewTrip()
+    //post the new trip here!!!
+    errorMessage.classList.add('hidden')
+  } else {
+    errorMessage.classList.remove('hidden')
+  }
 }
 
 function generateTraveler() {
@@ -112,41 +121,47 @@ function generateTripCosts(traveler) {
 }
 
 function generateNewTrip() {
+  //create a new trip object!
 
+//if the validate functions all evaluate to true, run the thingy
+//if not, dont and display error knight
 
 }
 
 function validateDateEntry() {
-  let validDate;
   let dateInput = document.querySelector('.date-input')
   if(moment(dateInput.value)._isValid || moment(dateInput.value).isAfter(moment(Date.now()))) {
-    validDate = true
+    return true
   } else {
-    validDate = false
+    return false
   }
-  return validDate
 }
 
 function validateDuration() {
-  let validNum;
   let durationInput = document.querySelector('.duration-input');
   if(typeof durationInput.value == 'number' || durationInput.value > 1) {
-    validNum = true
+    return true
   } else {
-    validNum = false
+    return false
   }
-  return validNum
 }
 
 function validateTravelers() {
-  let validNum;
   let travelerInput = document.querySelector('.traveler-input');
   if(typeof travelerInput.value == 'number' || travelerInput.value > 0) {
-    validNum = true
+    return true
   } else {
-    validNum = false
+    return false
   }
-  return validNum
+}
+
+function validateDestination() {
+  let dropdown = document.querySelector('.dropdown');
+  if(dropdown.value == 'question') {
+    return false
+  } else {
+    return true
+  }
 }
 
 

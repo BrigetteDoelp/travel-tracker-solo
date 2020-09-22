@@ -45,6 +45,13 @@ const updateDom = {
     })
   },
 
+  generateDestinationList(destinations) {
+    let destinationList = document.querySelector('.dropdown')
+    destinations.forEach(destination => {
+      destinationList.insertAdjacentHTML('beforeend', `<option value="${destination.id}">${destination.destination}</option>`)
+    })
+  },
+
 
 
 

@@ -23,11 +23,11 @@ h3 {
   margin: .5em;
 }
 
-.past-trips {
+.book-trip-area {
   height: 100%
 }
 
-.present-trips, .future-trips, .pending-trips, .book-trip-area {
+.present-trips, .future-trips, .pending-trips, .past-trips {
   height: 50%
 }
 
@@ -85,6 +85,24 @@ h3 {
 
 .button-img {
   width: 5em;
+}
+
+.error-message {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3em;
+}
+
+.error-knight {
+  width: 15em;
+}
+
+.message {
+  text-align: right;
+}
+
+.hidden {
+  display: none;
 }
 
 
