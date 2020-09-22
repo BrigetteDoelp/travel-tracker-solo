@@ -47,8 +47,8 @@ function generateTraveler() {
   let soloTraveler = new Traveler(traveler)
   generateTravelerTripData(soloTraveler)
   findYearOfDestinations(soloTraveler)
-  // generateTripCosts(soloTraveler)
-  console.log(soloTraveler.yearOfTrips())
+  generateTripCosts(soloTraveler)
+  console.log(soloTraveler)
   console.log(generateTripCosts(soloTraveler))
   return soloTraveler
 }
@@ -96,7 +96,8 @@ function generateTripCosts(traveler) {
     acc += totalCostsForAll
     return acc
   }, 0)
-  return totalSpent
+  let includingAgentFee = (totalSpent * 1.1)
+  return includingAgentFee
 }
 
 
