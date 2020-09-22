@@ -60,6 +60,7 @@ function submitTrip() {
   validateDateEntry()
   validateDuration()
   validateTravelers()
+  validateDestination()
 }
 
 function generateTraveler() {
@@ -123,7 +124,6 @@ function generateNewTrip() {
 }
 
 function validateDateEntry() {
-  let validDate;
   let dateInput = document.querySelector('.date-input')
   if(moment(dateInput.value)._isValid || moment(dateInput.value).isAfter(moment(Date.now()))) {
     errorMessage.classList.add('hidden')
@@ -133,7 +133,6 @@ function validateDateEntry() {
 }
 
 function validateDuration() {
-  let validNum;
   let durationInput = document.querySelector('.duration-input');
   if(typeof durationInput.value == 'number' || durationInput.value > 1) {
     errorMessage.classList.add('hidden')
@@ -143,12 +142,20 @@ function validateDuration() {
 }
 
 function validateTravelers() {
-  let validNum;
   let travelerInput = document.querySelector('.traveler-input');
   if(typeof travelerInput.value == 'number' || travelerInput.value > 0) {
     errorMessage.classList.add('hidden')
   } else {
     errorMessage.classList.remove('hidden')
+  }
+}
+
+function validateDestination() {
+  let dropdown = document.querySelector('.dropdown');
+  if(dropdown.value == 'question') {
+    errorMessage.classList.remove('hidden')
+  } else {
+    errorMessage.classList.add('hidden')
   }
 }
 
