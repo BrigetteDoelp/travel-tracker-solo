@@ -26,15 +26,13 @@ window.onload = onLoadContent;
 
 function onLoadContent() {
   let userID = Math.floor((Math.random() * 50) + 1);
-  console.log(userID)
 
   let promise0 = api.fetchAllTrips();
   let promise1 = api.fetchAllDestinations();
-  let promise2 = api.fetchOneTraveler(userID)
+  let promise2 = api.fetchOneTraveler(userID);
 
   Promise.all([promise0, promise1, promise2])
     .then(values => {
-      // console.log(values)
       trips = values[0].trips;
       destinations = values[1].destinations;
       traveler = values[2]
@@ -42,17 +40,18 @@ function onLoadContent() {
     })
 }
 
-//GENERAL FUNCTIONS
 function generateTraveler() {
-  let soloTraveler = new Traveler(traveler)
-  generateTravelerTripData(soloTraveler)
+  let soloTraveler = new Traveler(traveler);
+  generateTravelerTripData(soloTraveler);
+  findYearOfDestinations(soloTraveler);
+  generateTripCosts(soloTraveler);
   return soloTraveler
 }
 
 function generateTravelerTripData(traveler) {
   let travelerDestinations = [];
-  traveler.travelersDestinations = travelerDestinations
-  traveler.travelersTrips = trips.filter(trip => trip.userID === traveler.id)
+  traveler.travelersDestinations = travelerDestinations;
+  traveler.travelersTrips = trips.filter(trip => trip.userID === traveler.id);
   let travelersTrips = traveler.travelersTrips
   destinations.forEach(destination => {
     travelersTrips.forEach(trip => {
@@ -60,30 +59,38 @@ function generateTravelerTripData(traveler) {
         travelerDestinations.push(destination)
       }
     })
-  })
+  });
 }
 
-function generateTripCosts() {
-  let soloTraveler = generateTraveler()
-  let yearOfTrips = soloTraveler.yearOfTrips()
-  let totalCosts = yearOfTrips.reduce((acc, trip) => {
+function findYearOfDestinations(traveler) {
+  let yearOfTrips = traveler.yearOfTrips();
+  let allDestinations = traveler.travelersDestinations;
+  let thisYearsDestinations = [];
+  allDestinations.forEach(destination => {
+    yearOfTrips.forEach(trip => {
+      if (destination.id === trip.destinationID) {
+        thisYearsDestinations.push(destination)
+      }
+    })
+  });
+  return thisYearsDestinations
+}
 
+function generateTripCosts(traveler) {
+  let trips = traveler.yearOfTrips();
+  let destinations = findYearOfDestinations(traveler);
+  let totalSpent = destinations.reduce((acc, destination) => {
+    let lodging;
+    let lodgingAndFlight;
+    let totalCostsForAll;
+    trips.forEach(trip => {
+      lodging = (destination.estimatedLodgingCostPerDay * trip.duration);
+      lodgingAndFlight = (lodging + destination.estimatedFlightCostPerPerson);
+      totalCostsForAll = (lodgingAndFlight * trip.travelers);
+    })
+    acc += totalCostsForAll
     return acc
-  }, 0)
+  }, 0);
+  let includingAgentFee = (totalSpent * 1.1);
+  return includingAgentFee
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
