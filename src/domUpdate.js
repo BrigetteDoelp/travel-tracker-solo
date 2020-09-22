@@ -1,5 +1,10 @@
 const updateDom = {
 
+  welcomeMessage(traveler) {
+    let welcome = document.querySelector('.greeting');
+    welcome.innerHTML = `Welcome ${traveler.name}!`
+  },
+
   updatePastTrips(traveler) {
     let pastData = traveler.pastTrips()
     let pastArea = document.querySelector('.past-trip-card');
