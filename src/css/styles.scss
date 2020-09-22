@@ -1,0 +1,97 @@
+.dashboard {
+  display: flex;
+  justify-content: space-around;
+  height: 85vh;
+  width: 100%;
+}
+
+header {
+  border: 2px black solid;
+  width: 100%;
+  text-align: center;
+  height: 15vh
+}
+
+h3 {
+  text-align: center;
+}
+
+.past-trips, .present-trips, .future-trips, .pending-trips, .book-trip-area {
+  border: none;
+  background: hsla(30, 23%, 60%, 1);
+  border-radius: 1em;
+  margin: .5em;
+}
+
+.past-trips {
+  height: 100%
+}
+
+.present-trips, .future-trips, .pending-trips, .book-trip-area {
+  height: 50%
+}
+
+.center {
+  width: 50%;
+}
+
+.left, .right {
+  width: 25%;
+}
+
+.book-trip-area {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  // border: 2px red solid;
+  align-items: center;
+}
+
+.input-area {
+  // border: 2px black solid;
+  width: 30em;
+  // justify-content: space-around;
+}
+
+.booking-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-entry {
+  width: 20em;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  padding: .5em;
+}
+
+.destination-select {
+  width: 20em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: .5em;
+}
+
+.user-entry-button {
+  background: none;
+  border: none;
+}
+
+.button-img {
+  width: 5em;
+}
+
+
+
+
+
+
+
+
+//

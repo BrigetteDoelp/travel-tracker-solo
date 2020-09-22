@@ -6,37 +6,72 @@
   </head>
   <body>
     <header>
-      <h1>Travel Tracker</h1>
+      <h1>Wayshrine Quest Registry</h1>
+      <h2 class = 'greeting'></h2>
     </header>
     <main>
-      <article class="">
-        <section>
-          <h3>Past Trips</h3>
-          <p class = 'past-trips'></p>
-        </section>
-        <section>
-          <h3>Present Trips</h3>
-          <p class = 'present-trips'></p>
-        </section>
-        <section>
+      <section class = 'dashboard'>
+<!-- //////////////////////////////////////////////////////////////// -->
+        <article class = 'left'>
+          <section class = 'card past-trips'>
+            <h3>Past Trips</h3>
+              <section class = 'past-trip-card'>
+              </section>
+          </section>
+        </article>
+<!-- //////////////////////////////////////////////////////////////// -->
+        <article class = 'center'>
+          <section class = 'book-trip-area'>
+            <h3>Book a trip!</h3>
+              <section class = 'input-area'>
+<!-- //////////////////////////////////////////////////////////////// -->
+                <div class = 'input'>
+
+                  <div class='date-select'>
+                    <input class='user-entry date-input' type="text" placeholder="Quest starting date? YYYY-MM-DD" value="">
+                  </div>
+
+                  <div class = 'length-select'>
+                    <input class = 'user-entry duration-input' type="text" placeholder='How long will your quest be?' value="">
+                  </div>
+
+                  <div class = 'travelers-select'>
+                    <input class = 'user-entry traveler-input' type="text" placeholder='What is the size of your party?' value="">
+                  </div>
+
+                </div>
+<!-- //////////////////////////////////////////////////////////////// -->
+                <section class='booking-area'>
+                    <input class='destination-select' type="text" placeholder='Where will your quest take place?' value="">
+                  <button class='submit-button' type="button" name="submit-button"><img class='button-img' src='https://64.media.tumblr.com/e4700ec550b1c0973abfd9f62e2b1fb2/1bc8f542ae83dc0f-08/s540x810/0aa7905962f2ad4f202edc42b47afc9da057761a.png'><br>Submit quest for approval.</button>
+                </section>
+
+              </section>
+            </section>
+            <section class = 'card present-trips'>
+              <h3>Present Trips</h3>
+              <section class = 'present-trip-card'>
+              </section>
+            </section>
+          </article>
+
+
+        <article>
+          <section class = 'card future-trips'>
           <h3>Future Trips</h3>
-          <p class = 'future-trips'></p>
-        </section>
-        <section>
+            <section class = 'future-trip-card'>
+            </section>
+          </section>
+          <section class = 'card pending-trips'>
           <h3>Pending Trips</h3>
-          <p class = 'pending-trips'></p>
-        </section>
-      </article>
-      <section>
-        <button type="button" name="button"></button>
-        <input type="text" name="" value="">
-        <button type="button" name="button"></button>
-        <input type="text" name="" value="">
-        <button type="button" name="button"></button>
-        <input type="text" name="" value="">
-        <button type="button" name="button"></button>
-        <input type="text" name="" value="">
+            <section class = 'pending-trip-card'>
+            </section>
+          </section>
+        </article>
+
       </section>
+
+
     </main>
   </body>
 </html>

@@ -2,7 +2,7 @@
 // Do not delete or rename this file ********
 
 // An example of how you tell webpack to use a CSS (SCSS) file
-import './css/base.scss';
+import './css/styles.scss';
 import moment from 'moment';
 
 
@@ -12,8 +12,8 @@ import './images/turing-logo.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 import Traveler from './Traveler.js';
-
-import updateDOM from './domUpdate.js';
+// import Trip from './Traveler.js';
+import updateDom from './domUpdate.js';
 import api from './api.js';
 
 // let userID = Math.floor((Math.random() * 50) + 1);
@@ -21,23 +21,39 @@ let travelers;
 let traveler;
 let trips;
 let destinations;
+let submitBtn = document.querySelector('.submit-button')
 
-window.onload = onLoadContent;
+window.onload = onLoadData;
 
-function onLoadContent() {
+submitBtn.addEventListener('click', submitTrip);
+
+function onLoadData() {
   let userID = Math.floor((Math.random() * 50) + 1);
-
   let promise0 = api.fetchAllTrips();
   let promise1 = api.fetchAllDestinations();
   let promise2 = api.fetchOneTraveler(userID);
-
   Promise.all([promise0, promise1, promise2])
     .then(values => {
+      console.log(values)
       trips = values[0].trips;
       destinations = values[1].destinations;
       traveler = values[2]
-      generateTraveler()
+      let newTraveler = generateTraveler()
+      // console.log(newTraveler.pastTrips());
+      onLoadDisplay(newTraveler)
     })
+}
+
+function onLoadDisplay(traveler) {
+  updateDom.welcomeMessage(traveler);
+  updateDom.updatePastTrips(traveler);
+  updateDom.updatePresentTrips(traveler);
+  updateDom.updateFutureTrips(traveler);
+  updateDom.updatePendingTrips(traveler);
+}
+
+function submitTrip() {
+  console.log(validateDateEntry(), validateDuration(), validateTravelers())
 }
 
 function generateTraveler() {
@@ -94,3 +110,53 @@ function generateTripCosts(traveler) {
   let includingAgentFee = (totalSpent * 1.1);
   return includingAgentFee
 }
+
+function generateNewTrip() {
+
+
+}
+
+function validateDateEntry() {
+  let validDate;
+  let dateInput = document.querySelector('.date-input')
+  if(moment(dateInput.value)._isValid || moment(dateInput.value).isAfter(moment(Date.now()))) {
+    validDate = true
+  } else {
+    validDate = false
+  }
+  return validDate
+}
+
+function validateDuration() {
+  let validNum;
+  let durationInput = document.querySelector('.duration-input');
+  if(typeof durationInput.value == 'number' || durationInput.value > 1) {
+    validNum = true
+  } else {
+    validNum = false
+  }
+  return validNum
+}
+
+function validateTravelers() {
+  let validNum;
+  let travelerInput = document.querySelector('.traveler-input');
+  if(typeof travelerInput.value == 'number' || travelerInput.value > 0) {
+    validNum = true
+  } else {
+    validNum = false
+  }
+  return validNum
+}
+
+
+
+
+
+
+
+
+
+
+
+/// END OF THE JAVASCRIPT ///
