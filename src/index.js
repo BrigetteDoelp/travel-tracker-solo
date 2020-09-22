@@ -12,7 +12,7 @@ import './images/turing-logo.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 import Traveler from './Traveler.js';
-import Trip from './Traveler.js';
+// import Trip from './Traveler.js';
 import updateDom from './domUpdate.js';
 import api from './api.js';
 
@@ -21,8 +21,11 @@ let travelers;
 let traveler;
 let trips;
 let destinations;
+let submitBtn = document.querySelector('.submit-button')
 
 window.onload = onLoadData;
+
+submitBtn.addEventListener('click', submitTrip);
 
 function onLoadData() {
   let userID = Math.floor((Math.random() * 50) + 1);
@@ -46,6 +49,10 @@ function onLoadDisplay(traveler) {
   updateDom.updatePresentTrips(traveler);
   updateDom.updateFutureTrips(traveler);
   updateDom.updatePendingTrips(traveler);
+}
+
+function submitTrip() {
+  console.log(validateDateEntry())
 }
 
 function generateTraveler() {
@@ -105,6 +112,19 @@ function generateTripCosts(traveler) {
 
 function generateNewTrip() {
 
+
+}
+
+function validateDateEntry() {
+  let validDate;
+  let dateInput = document.querySelector('.date-input')
+
+  if(moment(dateInput.value)._isValid || moment(dateInput.value).isAfter(moment(Date.now()))) {
+    validDate = true
+  } else {
+    validDate = false
+  }
+  return validDate
 }
 
 
