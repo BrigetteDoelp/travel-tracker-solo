@@ -21,7 +21,8 @@ let travelers;
 let traveler;
 let trips;
 let destinations;
-let submitBtn = document.querySelector('.submit-button')
+let submitBtn = document.querySelector('.submit-button');
+let errorMessage = document.querySelector('.error-message');
 
 window.onload = onLoadData;
 
@@ -53,7 +54,9 @@ function onLoadDisplay(traveler) {
 }
 
 function submitTrip() {
-  console.log(validateDateEntry(), validateDuration(), validateTravelers())
+  validateDateEntry()
+  validateDuration()
+  validateTravelers()
 }
 
 function generateTraveler() {
@@ -120,33 +123,30 @@ function validateDateEntry() {
   let validDate;
   let dateInput = document.querySelector('.date-input')
   if(moment(dateInput.value)._isValid || moment(dateInput.value).isAfter(moment(Date.now()))) {
-    validDate = true
+    errorMessage.classList.add('hidden')
   } else {
-    validDate = false
+    errorMessage.classList.remove('hidden')
   }
-  return validDate
 }
 
 function validateDuration() {
   let validNum;
   let durationInput = document.querySelector('.duration-input');
   if(typeof durationInput.value == 'number' || durationInput.value > 1) {
-    validNum = true
+    errorMessage.classList.add('hidden')
   } else {
-    validNum = false
+    errorMessage.classList.remove('hidden')
   }
-  return validNum
 }
 
 function validateTravelers() {
   let validNum;
   let travelerInput = document.querySelector('.traveler-input');
   if(typeof travelerInput.value == 'number' || travelerInput.value > 0) {
-    validNum = true
+    errorMessage.classList.add('hidden')
   } else {
-    validNum = false
+    errorMessage.classList.remove('hidden')
   }
-  return validNum
 }
 
 
