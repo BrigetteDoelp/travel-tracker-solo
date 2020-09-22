@@ -53,7 +53,7 @@ function onLoadDisplay(traveler) {
 }
 
 function submitTrip() {
-  console.log(validateDuration())
+  console.log(validateDateEntry(), validateDuration(), validateTravelers())
 }
 
 function generateTraveler() {
@@ -139,8 +139,14 @@ function validateDuration() {
 }
 
 function validateTravelers() {
+  let validNum;
   let travelerInput = document.querySelector('.traveler-input');
-
+  if(typeof travelerInput.value == 'number' || travelerInput.value > 0) {
+    validNum = true
+  } else {
+    validNum = false
+  }
+  return validNum
 }
 
 
