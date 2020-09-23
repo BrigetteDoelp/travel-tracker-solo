@@ -25,7 +25,6 @@ let durationInput = document.querySelector('.duration-input');
 let travelerInput = document.querySelector('.traveler-input');
 
 
-
 window.onload = onLoadData;
 
 submitBtn.addEventListener('click', submitTrip);
@@ -57,6 +56,16 @@ function onSubmitData() {
     })
 }
 
+function clearInput() {
+  let dateInput = document.getElementById('startdate');
+  let durationInput = document.getElementById('duration');
+  let partySizeInput = document.getElementById('partysize');
+
+  dateInput.value = '';
+  durationInput.value = '';
+  partySizeInput.value = '';
+}
+
 function fetchUserData(travelerID) {
   let user = api.fetchOneTraveler(travelerID)
 }
@@ -79,6 +88,7 @@ function onLoadDisplay(traveler, destinations) {
 function submitTrip() {
   if(validateDateEntry() && validateDuration() && validateTravelers() && validateDestination() === true) {
     let trip = generateNewTrip()
+    clearInput()
     postTrip()
     errorMessage.classList.add('hidden')
   } else {
