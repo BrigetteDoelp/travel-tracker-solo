@@ -7,27 +7,23 @@
 }
 
 header {
-  // border: 2px black solid;
   width: 100%;
   text-align: center;
-  height: 20vh
 }
 
 h1 {
-  margin: -.1em;
+  margin: none;
   font-family: 'Princess Sofia';
   font-size: 3em;
 }
 
 h2 {
-  margin: -.07em;
   font-family: 'Sue Ellen Francisco';
   font-size: 2.5em;
-
 }
 
 h3 {
-  // line-height: 1.5;
+  margin: none;
   text-align: center;
   font-family: 'Sue Ellen Francisco';
   font-size: 2.2em;
@@ -41,8 +37,10 @@ p {
   overflow: scroll;
 }
 
-.past-trip-card {
-  // border: 2px black solid;
+label {
+  text-align: center;
+  font-family: 'Chilanka';
+  font-size: 1em;
 }
 
 .book-trip-area {
@@ -57,18 +55,11 @@ p {
   height: 100%
 }
 
-// .present-trips, .future-trips, .pending-trips, .past-trips {
-//   height: 50%;
-//   min-width: 25%;
-//   max-width: 25%;
-// }
-
 .card {
  width: 20em;
  height: 25em;
  border: 2px solid #457b9d;
  background: hsla(30, 23%, 60%, 1);
- // padding: 3em;
  margin: .5em;
  border-radius: .5em;
  overflow:scroll;
@@ -76,13 +67,6 @@ p {
 
 .center {
   width: 50%;
-}
-
-.left, .right {
-  width: 25%;
-
-  // background: hsla(30, 23%, 60%, 1);
-
 }
 
 .book-trip-area {
@@ -95,14 +79,11 @@ p {
 .input {
   display: flex;
   flex-direction: column;
-  // border: 2px red solid;
   align-items: center;
 }
 
 .input-area {
-  // border: 2px black solid;
   width: 30em;
-  // justify-content: space-around;
 }
 
 .booking-area {
@@ -110,7 +91,6 @@ p {
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-
 }
 
 .user-entry {
@@ -134,6 +114,7 @@ p {
 .submit-button {
   border: none;
   background: transparent;
+  margin-top: 1em;
 }
 
 .error-message {
@@ -154,10 +135,6 @@ p {
   height: 9.5em;
 }
 
-.message {
-
-}
-
 .hidden {
   display: none;
 }
@@ -169,6 +146,11 @@ p {
   text-wrap: wrap;
 }
 
+.dropdown-menu, .length-select, .travelers-select, .date-select {
+  display:flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
 
 
 
