@@ -2,24 +2,28 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Travel Tracker</title>
+    <link href='https://fonts.googleapis.com/css?family=Princess+Sofia' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Chilanka' rel='stylesheet'>
+    <title>Wayshrine Quest Registry</title>
   </head>
   <body>
     <header>
-      <h1>Wayshrine Quest Registry</h1>
+      <h1>Wayshrine Guild ; Quest Registry</h1>
       <h2 class = 'greeting'></h2>
+
     </header>
     <main>
       <section class = 'dashboard'>
 <!-- //////////////////////////////////////////////////////////////// -->
         <article class = 'left'>
           <section class = 'card past-trips'>
-            <h3>Past Trips</h3>
+            <h3>Past Quests</h3>
               <section class = 'past-trip-card'>
               </section>
           </section>
           <section class = 'card present-trips'>
-            <h3>Present Trips</h3>
+            <h3>Active Quests</h3>
             <section class = 'present-trip-card'>
             </section>
           </section>
@@ -27,7 +31,7 @@
 <!-- //////////////////////////////////////////////////////////////// -->
         <article class = 'center'>
           <section class = 'book-trip-area'>
-            <h3>Book a trip!</h3>
+            <h3>What is your next adventure?</h3>
               <section class = 'input-area'>
 <!-- //////////////////////////////////////////////////////////////// -->
                 <div class = 'input'>
@@ -50,21 +54,16 @@
 
                   <section class='dropdown-menu'>
                     <select class='dropdown' name='destination-select'>
-                      <option value='question'>Where will your quest take place?</option>
+                      <option value='question'>Where will you be questing?</option>
                     </select>
                   </section>
 
-                  <!-- <input class='destination-select' type="text" placeholder='Where will your quest take place?' value=""> -->
-
-
-
-
-
                   <button class='submit-button' type="button" name="submit-button"><img class='button-img' src='https://64.media.tumblr.com/e4700ec550b1c0973abfd9f62e2b1fb2/1bc8f542ae83dc0f-08/s540x810/0aa7905962f2ad4f202edc42b47afc9da057761a.png'><br>Submit quest for approval.</button>
                 </section>
+                <h4 class='moneyarea'></h4>
 
                 <section class='error-message hidden'>
-                  <h2 class='message'>Adventurer, please make sure you have filled out the quest registry form correctly!</h2>
+                  <h2 class='message'>Adventurer, make sure you have filled out the registry form correctly!</h2>
                   <img class='error-knight' src="https://64.media.tumblr.com/7bccd985994c4d6205df7115d856b855/1bc8f542ae83dc0f-11/s540x810/d38694d02f56c7eac2d5fe8a8ac5ee2e348cb29f.png" alt="">
                 </section>
 
@@ -74,12 +73,12 @@
 
         <article>
           <section class = 'card future-trips'>
-          <h3>Future Trips</h3>
+          <h3>Future Quests</h3>
             <section class = 'future-trip-card'>
             </section>
           </section>
           <section class = 'card pending-trips'>
-          <h3>Pending Trips</h3>
+          <h3>Quests Pending Approval</h3>
             <section class = 'pending-trip-card'>
             </section>
           </section>

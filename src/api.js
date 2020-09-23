@@ -27,9 +27,15 @@ const api = {
     return promise;
   },
 
-  //post new trip https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips
-  //post new destination https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations
-  //post (modify) single trip https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/updateTrip
+  fetchNewTrip(trip) {
+    console.log(trip)
+    const promise = fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips', trip)
+      .then (response => console.log(response))
+    return promise
+  },
+
 }
+
+
 
 export default api

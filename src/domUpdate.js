@@ -2,7 +2,7 @@ const updateDom = {
 
   welcomeMessage(traveler) {
     let welcome = document.querySelector('.greeting');
-    welcome.innerHTML = `Welcome ${traveler.name}!`
+    welcome.innerHTML = `Welcome, Adventurer ${traveler.name}!`
   },
 
   updatePastTrips(traveler) {
@@ -10,7 +10,7 @@ const updateDom = {
     let pastArea = document.querySelector('.past-trip-card');
     pastData.forEach(trip => {
       pastArea.innerHTML += `
-        <p class = 'past-trip'>You went to ${trip.destinationID} on ${trip.date} for ${trip.duration} days!</p>
+        <p class='past-trip'>Quest to ${trip.destinationID} <br>• Party Size : ${trip.travelers}<br>• Start Date: ${trip.date}<br>• Quest Duration: ${trip.duration} days.</p>
       `
     })
   },
@@ -20,7 +20,7 @@ const updateDom = {
     let presentArea = document.querySelector('.present-trip-card');
     presentData.forEach(trip => {
       presentArea.innerHTML += `
-        <p class = 'present-trip'>You are currently in ${trip.destinationID}! Yay!</p>
+        <p class = 'present-trip'>Quest to ${trip.destinationID} <br>• Party Size : ${trip.travelers}<br>• Start Date: ${trip.date}<br>• Quest Duration: ${trip.duration} days</p>
       `
     })
   },
@@ -30,7 +30,7 @@ const updateDom = {
     let futureArea = document.querySelector('.future-trip-card');
     futureData.forEach(trip => {
       futureArea.innerHTML += `
-        <p class = 'future-trip'>You will be going to ${trip.destinationID} on ${trip.date} for ${trip.duration} days!</p>
+        <p class = 'future-trip'>You have an upcoming quest in ${trip.destinationID}.<br>It begins on ${trip.date} and will last for ${trip.duration} days. Please take this time to prepare yourself and your party accordingly.</p>
       `
     })
   },
@@ -40,7 +40,7 @@ const updateDom = {
     let pendingArea = document.querySelector('.pending-trip-card');
     pendingData.forEach(trip => {
       pendingArea.innerHTML += `
-        <p class = 'pending-trip'>Your trip to ${trip.destinationID} is pending approval!</p>
+        <p class = 'pending-trip'>Your quest to ${trip.destinationID} is pending approval of the guild master.<br> Thank you for your patience.</p>
       `
     })
   },
@@ -50,6 +50,13 @@ const updateDom = {
     destinations.forEach(destination => {
       destinationList.insertAdjacentHTML('beforeend', `<option value="${destination.id}">${destination.destination}</option>`)
     })
+  },
+
+  displayMoneySpent(traveler) {
+    let moneyArea = document.querySelector('.moneyarea')
+    let money = traveler.moneySpent
+    let roundedMonies = money.toFixed(2)
+    moneyArea.insertAdjacentHTML('beforeend', `You and your party have earned ${roundedMonies} gold this year!`)
   },
 
 
