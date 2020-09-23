@@ -48,6 +48,8 @@ function onLoadData() {
       let newTraveler = generateTraveler()
 
       onLoadDisplay(newTraveler, destinations)
+      getDestinations(destinations)
+      //call a function with getDestinations called inside of it
       // console.log(newTraveler)
     })
 }
@@ -55,6 +57,12 @@ function onLoadData() {
 function fetchUserData(travelerID) {
   let user = api.fetchOneTraveler(travelerID)
   console.log(user)
+}
+
+function getDestinations(destinations) {
+  let allDestinations = destinations
+  console.log(allDestinations)
+  return allDestinations
 }
 
 function onLoadDisplay(traveler, destinations) {
@@ -65,6 +73,9 @@ function onLoadDisplay(traveler, destinations) {
   updateDom.updatePendingTrips(traveler);
   updateDom.generateDestinationList(destinations);
   updateDom.displayMoneySpent(traveler);
+}
+
+function clickStuff() {
 
 }
 
@@ -89,6 +100,7 @@ function generateNewTrip() {
     status: 'pending',
     suggestedActivities: []
   }
+  generateNewTripCost(newTrip)
   convertTripForPost(newTrip)
   return newTrip
 }
@@ -179,10 +191,21 @@ function generateTripCosts(traveler) {
   traveler.moneySpent = includingAgentFee
 }
 
+function generateNewTripCost(trip, destinations) {
+  let singleDestination = destinations.filter(destination => {
+    return trip.destinationID === destination.id
+  })
+  // let lodging = (singleDestination.estimatedLodgingCostPerDay * trip.duration);
+  // let plusFlight = (lodging + singleDestination.estimatedFlightCostPerPerson);
+  // let baseCostForAll = (plusFlight * trip.travelers);
+  // let plusAgentFee = (baseCostForAll * 1.1)
+  console.log(singleDestination.estimatedLodgingCostPerDay, singleDestination.estimatedFlightCostPerPerson)
+  return plusAgentFee
+}
+
 
 
 function validateDateEntry() {
-
   if(moment(dateInput.value)._isValid || moment(dateInput.value).isAfter(moment(Date.now()))) {
     return true
   } else {
