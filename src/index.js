@@ -95,7 +95,7 @@ function generateNewTrip() {
 
 function convertTripForPost(trip) {
   requestedTrip = {
-    id: Math.floor((Math.random() * 100) + 50),
+    id: Date.now(),
     userID: +trip.userID,
     destinationID: +trip.destinationID,
     travelers: +trip.travelers,
