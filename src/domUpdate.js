@@ -10,7 +10,7 @@ const updateDom = {
     let pastArea = document.querySelector('.past-trip-card');
     pastData.forEach(trip => {
       pastArea.innerHTML += `
-        <p class='past-trip'> Quest to ${trip.destinationID} <br>• Party Size : ${trip.travelers}<br>• Start Date: ${trip.date}<br>• Quest Duration: ${trip.duration} days.</p>
+        <p class='past-trip'>Quest to ${trip.destinationID} <br>• Party Size : ${trip.travelers}<br>• Start Date: ${trip.date}<br>• Quest Duration: ${trip.duration} days.</p>
       `
     })
   },
@@ -20,7 +20,7 @@ const updateDom = {
     let presentArea = document.querySelector('.present-trip-card');
     presentData.forEach(trip => {
       presentArea.innerHTML += `
-        <p class = 'present-trip'>You have an active quest in ${trip.destinationID}. Best of luck, adventurer!</p>
+        <p class = 'present-trip'>Quest to ${trip.destinationID} <br>• Party Size : ${trip.travelers}<br>• Start Date: ${trip.date}<br>• Quest Duration: ${trip.duration} days</p>
       `
     })
   },
@@ -30,7 +30,7 @@ const updateDom = {
     let futureArea = document.querySelector('.future-trip-card');
     futureData.forEach(trip => {
       futureArea.innerHTML += `
-        <p class = 'future-trip'>You have an upcoming quest in ${trip.destinationID}.<br>It begins on ${trip.date} and will last for ${trip.duration} days.</p>
+        <p class = 'future-trip'>You have an upcoming quest in ${trip.destinationID}.<br>It begins on ${trip.date} and will last for ${trip.duration} days. Please take this time to prepare yourself and your party accordingly.</p>
       `
     })
   },

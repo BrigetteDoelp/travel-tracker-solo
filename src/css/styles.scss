@@ -36,8 +36,8 @@ p {
   font-family: 'Chilanka';
   padding-left: .5em;
   padding-right: .5em;
-  // text-align: center;
   text-wrap: wrap;
+  overflow: scroll;
 }
 
 .past-trip-card {
@@ -55,8 +55,21 @@ p {
   height: 100%
 }
 
-.present-trips, .future-trips, .pending-trips, .past-trips {
-  height: 50%
+// .present-trips, .future-trips, .pending-trips, .past-trips {
+//   height: 50%;
+//   min-width: 25%;
+//   max-width: 25%;
+// }
+
+.card {
+ width: 20em;
+ height: 25em;
+ border: 2px solid #457b9d;
+ background: hsla(30, 23%, 60%, 1);
+ // padding: 3em;
+ margin: .5em;
+ border-radius: .5em;
+ overflow:scroll;
 }
 
 .center {
@@ -65,6 +78,9 @@ p {
 
 .left, .right {
   width: 25%;
+
+  // background: hsla(30, 23%, 60%, 1);
+
 }
 
 .book-trip-area {
