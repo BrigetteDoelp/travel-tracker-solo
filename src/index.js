@@ -20,6 +20,7 @@ let travelers;
 let traveler;
 let trips;
 let destinations;
+let requestedTrip;
 let userID = Math.floor((Math.random() * 50) + 1);
 let submitBtn = document.querySelector('.submit-button');
 let errorMessage = document.querySelector('.error-message');
@@ -46,9 +47,14 @@ function onLoadData() {
       traveler = values[2]
       let newTraveler = generateTraveler()
 
-
       onLoadDisplay(newTraveler, destinations)
+      // console.log(newTraveler)
     })
+}
+
+function fetchUserData(travelerID) {
+  let user = api.fetchOneTraveler(travelerID)
+  console.log(user)
 }
 
 function onLoadDisplay(traveler, destinations) {
@@ -58,17 +64,63 @@ function onLoadDisplay(traveler, destinations) {
   updateDom.updateFutureTrips(traveler);
   updateDom.updatePendingTrips(traveler);
   updateDom.generateDestinationList(destinations);
+  updateDom.displayMoneySpent(traveler);
 
 }
 
 function submitTrip() {
   if(validateDateEntry() && validateDuration() && validateTravelers() && validateDestination() === true) {
-    let newTrip = generateNewTrip()
-    console.log(newTrip)
+    let trip = generateNewTrip()
+    postTrip()
     errorMessage.classList.add('hidden')
   } else {
     errorMessage.classList.remove('hidden')
   }
+}
+
+function generateNewTrip() {
+  let newTrip = {
+    id: Math.floor((Math.random() * 100) + 50),
+    userID: userID,
+    destinationID: parseInt(dropdown.value),
+    travelers: parseInt(travelerInput.value),
+    date: dateInput.value,
+    duration: parseInt(durationInput.value),
+    status: 'pending',
+    suggestedActivities: []
+  }
+  convertTripForPost(newTrip)
+  return newTrip
+}
+
+function convertTripForPost(trip) {
+  requestedTrip = {
+    id: Math.floor((Math.random() * 100) + 50),
+    userID: +trip.userID,
+    destinationID: +trip.destinationID,
+    travelers: +trip.travelers,
+    date: dateInput.value,
+    duration: +trip.duration,
+    status: 'pending',
+    suggestedActivities: []
+  }
+  console.log(requestedTrip)
+}
+
+function postTrip() {
+  let postTrip = requestedTrip
+   // console.log(postTrip)
+  let postRequest = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(postTrip)
+  };
+  let postedTrip = api.fetchNewTrip(postRequest);
+  // console.log(postedTrip)
+  Promise.all([postedTrip])
+    // .then(console.log('sorry'))
 
 }
 
@@ -124,26 +176,10 @@ function generateTripCosts(traveler) {
     return acc
   }, 0);
   let includingAgentFee = (totalSpent * 1.1);
-  return includingAgentFee
+  traveler.moneySpent = includingAgentFee
 }
 
-function generateNewTrip() {
-  let trip = {
-    'id': Math.floor((Math.random() * 100) + 50),
-    'userID': userID,
-    "destinationID": parseInt(dropdown.value),
-    "travelers": parseInt(travelerInput.value),
-    "date": dateInput.value,
-    "duration": parseInt(durationInput.value),
-    "status": 'pending',
-    "suggestedActivities": []
-  }
-  //create a new trip object!
 
-//if the validate functions all evaluate to true, run the thingy
-//if not, dont and display error knight
-  return trip
-}
 
 function validateDateEntry() {
 
@@ -187,5 +223,5 @@ function validateDestination() {
 
 
 
-
+export default generateTripCosts
 /// END OF THE JAVASCRIPT ///

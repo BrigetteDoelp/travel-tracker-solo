@@ -52,6 +52,12 @@ const updateDom = {
     })
   },
 
+  displayMoneySpent(traveler) {
+    let moneyArea = document.querySelector('.moneyarea')
+    let money = traveler.moneySpent
+    console.log(money)
+  },
+
 
 
 
