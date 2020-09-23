@@ -47,7 +47,7 @@ function onLoadData() {
       traveler = values[2]
       let newTraveler = generateTraveler()
       onLoadDisplay(newTraveler, destinations)
-      // console.log(newTraveler)
+      console.log(newTraveler)
     })
 }
 
@@ -61,6 +61,7 @@ function onSubmitData() {
       trips = values[0].trips;
       destinations = values[1].destinations;
       traveler = values[2]
+      let newTraveler = generateTraveler()
     })
 }
 
@@ -135,11 +136,18 @@ function postTrip() {
     body: JSON.stringify(postTrip)
   };
   let postedTrip = api.fetchNewTrip(postRequest);
-  // console.log(postedTrip)
-  Promise.all([postedTrip])
+  let promise0 = api.fetchOneTraveler(userID);
+  Promise.all([postedTrip, promise0])
     .then(onSubmitData())
-    .then(console.log(destinations))
-    .then(generateNewTripCost(requestedTrip, destinations))
+    .then(values => {
+      console.log(values)
+      let traveler = values[1]
+      let newTraveler = generateTraveler()
+      let tripCost = generateNewTripCost(requestedTrip, destinations)
+      updateDom.displayNewTripCost(tripCost)
+      newTraveler.travelersTrips.push(requestedTrip)
+      updateDom.updatePendingTrips(newTraveler)
+    })
 }
 
 function generateTraveler() {
