@@ -12,20 +12,18 @@ header {
 }
 
 h1 {
-  margin: -.1em;
+  margin: none;
   font-family: 'Princess Sofia';
   font-size: 3em;
 }
 
 h2 {
-  margin: -.07em;
   font-family: 'Sue Ellen Francisco';
   font-size: 2.5em;
-
 }
 
 h3 {
-  // line-height: 1.5;
+  margin: none;
   text-align: center;
   font-family: 'Sue Ellen Francisco';
   font-size: 2.2em;
@@ -37,6 +35,12 @@ p {
   padding-right: .5em;
   text-wrap: wrap;
   overflow: scroll;
+}
+
+label {
+  text-align: center;
+  font-family: 'Chilanka';
+  font-size: 1em;
 }
 
 .book-trip-area {
@@ -110,6 +114,7 @@ p {
 .submit-button {
   border: none;
   background: transparent;
+  margin-top: 1em;
 }
 
 .error-message {
@@ -141,6 +146,11 @@ p {
   text-wrap: wrap;
 }
 
+.dropdown-menu, .length-select, .travelers-select, .date-select {
+  display:flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
 
 
 
