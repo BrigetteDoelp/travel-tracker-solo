@@ -44,11 +44,12 @@ p {
   // border: 2px black solid;
 }
 
-.past-trips, .present-trips, .future-trips, .pending-trips, .book-trip-area {
+.book-trip-area {
   border: none;
   background: hsla(30, 23%, 60%, 1);
   border-radius: 1em;
-  margin: .5em;
+  margin-right: 1em;
+  border: 2px solid #457b9d;
 }
 
 .book-trip-area {
