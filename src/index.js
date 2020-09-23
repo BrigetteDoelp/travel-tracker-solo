@@ -46,11 +46,21 @@ function onLoadData() {
       destinations = values[1].destinations;
       traveler = values[2]
       let newTraveler = generateTraveler()
-
       onLoadDisplay(newTraveler, destinations)
-      getDestinations(destinations)
-      //call a function with getDestinations called inside of it
       // console.log(newTraveler)
+    })
+}
+
+function onSubmitData() {
+  let promise0 = api.fetchAllTrips();
+  let promise1 = api.fetchAllDestinations();
+  let promise2 = api.fetchOneTraveler(userID);
+  Promise.all([promise0, promise1, promise2])
+    .then(values => {
+      console.log(values)
+      trips = values[0].trips;
+      destinations = values[1].destinations;
+      traveler = values[2]
     })
 }
 
@@ -75,10 +85,6 @@ function onLoadDisplay(traveler, destinations) {
   updateDom.displayMoneySpent(traveler);
 }
 
-function clickStuff() {
-
-}
-
 function submitTrip() {
   if(validateDateEntry() && validateDuration() && validateTravelers() && validateDestination() === true) {
     let trip = generateNewTrip()
@@ -100,7 +106,6 @@ function generateNewTrip() {
     status: 'pending',
     suggestedActivities: []
   }
-  generateNewTripCost(newTrip)
   convertTripForPost(newTrip)
   return newTrip
 }
@@ -132,8 +137,9 @@ function postTrip() {
   let postedTrip = api.fetchNewTrip(postRequest);
   // console.log(postedTrip)
   Promise.all([postedTrip])
-    // .then(console.log('sorry'))
-
+    .then(onSubmitData())
+    .then(console.log(destinations))
+    .then(generateNewTripCost(requestedTrip, destinations))
 }
 
 function generateTraveler() {
@@ -191,19 +197,18 @@ function generateTripCosts(traveler) {
   traveler.moneySpent = includingAgentFee
 }
 
-function generateNewTripCost(trip, destinations) {
-  let singleDestination = destinations.filter(destination => {
-    return trip.destinationID === destination.id
+function generateNewTripCost(passedInTrip, destinations) {
+  let trip = passedInTrip
+  let singleDestination = destinations.find(destination => {
+    return destination.id === trip.destinationID
   })
-  // let lodging = (singleDestination.estimatedLodgingCostPerDay * trip.duration);
-  // let plusFlight = (lodging + singleDestination.estimatedFlightCostPerPerson);
-  // let baseCostForAll = (plusFlight * trip.travelers);
-  // let plusAgentFee = (baseCostForAll * 1.1)
-  console.log(singleDestination.estimatedLodgingCostPerDay, singleDestination.estimatedFlightCostPerPerson)
-  return plusAgentFee
+  let lodging = (singleDestination.estimatedLodgingCostPerDay * trip.duration);
+  let plusFlight = (lodging + singleDestination.estimatedFlightCostPerPerson);
+  let baseCostForAll = (plusFlight * trip.travelers);
+  let plusAgentFee = (baseCostForAll * 1.1)
+  let roundedTotal = plusAgentFee.toFixed(2)
+  return roundedTotal
 }
-
-
 
 function validateDateEntry() {
   if(moment(dateInput.value)._isValid || moment(dateInput.value).isAfter(moment(Date.now()))) {
