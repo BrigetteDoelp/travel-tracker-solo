@@ -6,14 +6,42 @@
 }
 
 header {
-  border: 2px black solid;
+  // border: 2px black solid;
   width: 100%;
   text-align: center;
-  height: 15vh
+  height: 20vh
+}
+
+h1 {
+  margin: -.1em;
+  font-family: 'Princess Sofia';
+  font-size: 3em;
+}
+
+h2 {
+  margin: -.07em;
+  font-family: 'Sue Ellen Francisco';
+  font-size: 2.5em;
+
 }
 
 h3 {
+  // line-height: 1.5;
   text-align: center;
+  font-family: 'Sue Ellen Francisco';
+  font-size: 2.2em;
+}
+
+p {
+  font-family: 'Chilanka';
+  padding-left: .5em;
+  padding-right: .5em;
+  // text-align: center;
+  text-wrap: wrap;
+}
+
+.past-trip-card {
+  // border: 2px black solid;
 }
 
 .past-trips, .present-trips, .future-trips, .pending-trips, .book-trip-area {
@@ -78,13 +106,13 @@ h3 {
   padding: .5em;
 }
 
-.user-entry-button {
-  background: none;
-  border: none;
-}
-
 .button-img {
   width: 5em;
+}
+
+.submit-button {
+  border: none;
+  background: transparent;
 }
 
 .error-message {
@@ -94,7 +122,9 @@ h3 {
 }
 
 .error-knight {
-  width: 15em;
+  padding-top: 4em;
+  width: 10em;
+  height: 9.5em;
 }
 
 .message {
@@ -103,6 +133,12 @@ h3 {
 
 .hidden {
   display: none;
+}
+
+.moneyarea {
+  text-align: center;
+  font-family: 'Chilanka';
+  font-size: 1.5em;
 }
 
 
