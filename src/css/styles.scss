@@ -117,18 +117,24 @@ p {
 
 .error-message {
   display: flex;
-  justify-content: space-around;
   margin-top: 3em;
+  flex-direction: row-reverse;
+}
+
+.message {
+  align-items: flex-end;
+  // text-align: right;
+  font-size: 1.9em;
 }
 
 .error-knight {
-  padding-top: 4em;
+  padding-top: .7em;
   width: 10em;
   height: 9.5em;
 }
 
 .message {
-  text-align: right;
+
 }
 
 .hidden {
