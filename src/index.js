@@ -1,7 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.scss';
 import moment from 'moment';
 
@@ -15,7 +11,6 @@ import Traveler from './Traveler.js';
 import updateDom from './domUpdate.js';
 import api from './api.js';
 
-// let userID = Math.floor((Math.random() * 50) + 1);
 let travelers;
 let traveler;
 let trips;
@@ -41,13 +36,11 @@ function onLoadData() {
   let promise2 = api.fetchOneTraveler(userID);
   Promise.all([promise0, promise1, promise2])
     .then(values => {
-      console.log(values)
       trips = values[0].trips;
       destinations = values[1].destinations;
       traveler = values[2]
       let newTraveler = generateTraveler()
       onLoadDisplay(newTraveler, destinations)
-      console.log(newTraveler)
     })
 }
 
@@ -57,7 +50,6 @@ function onSubmitData() {
   let promise2 = api.fetchOneTraveler(userID);
   Promise.all([promise0, promise1, promise2])
     .then(values => {
-      console.log(values)
       trips = values[0].trips;
       destinations = values[1].destinations;
       traveler = values[2]
@@ -67,12 +59,10 @@ function onSubmitData() {
 
 function fetchUserData(travelerID) {
   let user = api.fetchOneTraveler(travelerID)
-  console.log(user)
 }
 
 function getDestinations(destinations) {
   let allDestinations = destinations
-  console.log(allDestinations)
   return allDestinations
 }
 
@@ -122,7 +112,6 @@ function convertTripForPost(trip) {
     status: 'pending',
     suggestedActivities: []
   }
-  console.log(requestedTrip)
 }
 
 function postTrip() {
@@ -140,7 +129,6 @@ function postTrip() {
   Promise.all([postedTrip, promise0])
     .then(onSubmitData())
     .then(values => {
-      console.log(values)
       let traveler = values[1]
       let newTraveler = generateTraveler()
       let tripCost = generateNewTripCost(requestedTrip, destinations)
@@ -253,11 +241,5 @@ function validateDestination() {
 
 
 
-
-
-
-
-
-
-export default generateTripCosts
+// export default generateTripCosts
 /// END OF THE JAVASCRIPT ///
