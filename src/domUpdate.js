@@ -56,7 +56,14 @@ const updateDom = {
     let moneyArea = document.querySelector('.moneyarea')
     let money = traveler.moneySpent
     let roundedMonies = money.toFixed(2)
-    moneyArea.insertAdjacentHTML('beforeend', `You and your party have earned ${roundedMonies} gold this year!`)
+    moneyArea.insertAdjacentHTML('beforeend', `You and your party have earned <br>${roundedMonies} gold this year!`)
+  },
+
+  displayNewTripCost(money) {
+    let moneyArea = document.querySelector('.moneyarea')
+    let newMoneyArea = document.querySelector('.newtripmoneyarea')
+    moneyArea.classList.add('hidden')
+    newMoneyArea.insertAdjacentHTML('beforeend', `You and your party are expected <br>to earn ${money} gold for this quest!`)
   },
 
 
