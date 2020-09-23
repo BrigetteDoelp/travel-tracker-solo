@@ -162,10 +162,11 @@ p {
   display: none;
 }
 
-.moneyarea {
+.moneyarea, .newtripmoneyarea {
   text-align: center;
   font-family: 'Chilanka';
   font-size: 1.5em;
+  text-wrap: wrap;
 }
 
 
