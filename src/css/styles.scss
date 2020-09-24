@@ -12,25 +12,25 @@ $section-border: 2px solid hsla(360, 5%, 0%, 1);
 header {
   width: 100%;
   text-align: center;
-}
+};
 
 h1 {
   margin: none;
   font-family: $header-font;
   font-size: 3em;
-}
+};
 
 h2 {
   font-family: $title-font;
   font-size: 2.5em;
-}
+};
 
 h3 {
   margin: none;
   text-align: center;
   font-family: $title-font;
   font-size: 2.2em;
-}
+};
 
 p {
   font-family: $basic-font;
@@ -38,7 +38,7 @@ p {
   padding-right: .5em;
   text-wrap: wrap;
   overflow: scroll;
-}
+};
 
 .dashboard {
   display: flex;
@@ -46,13 +46,13 @@ p {
   flex-wrap: wrap;
   height: 85vh;
   width: 100%;
-}
+};
 
 label {
   text-align: center;
   font-family: $basic-font;
   font-size: 1em;
-}
+};
 
 .book-trip-area {
   border: none;
@@ -60,11 +60,11 @@ label {
   border-radius: 1em;
   margin-right: 1em;
   border: $section-border;
-}
+};
 
 .book-trip-area {
   height: 100%
-}
+};
 
 .card {
  width: 20em;
@@ -74,98 +74,89 @@ label {
  margin: .5em;
  border-radius: .5em;
  overflow: scroll;
-}
+};
 
 .center {
   width: 50%;
-}
+};
 
 .book-trip-area {
   align-items: center;
   display: flex;
   flex-direction: column;
-
-}
+};
 
 .input {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+};
 
 .input-area {
   width: 30em;
-}
+};
 
 .booking-area {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-}
+};
 
 .user-entry {
   width: 20em;
   margin-top: .5em;
   margin-bottom: .5em;
   padding: .5em;
-}
+};
 
 .destination-select {
   width: 20em;
   margin-top: 1em;
   margin-bottom: 1em;
   padding: .5em;
-}
+};
 
 .button-img {
   width: 5em;
-}
+};
 
 .submit-button, .login-button {
   border: none;
   background: transparent;
   margin-top: 1em;
-}
+};
 
 .error-message {
   display: flex;
   margin-top: 3em;
   flex-direction: row-reverse;
-}
+};
 
 .message {
   align-items: flex-end;
   font-size: 1.9em;
-}
+};
 
 .error-knight {
   padding-top: .7em;
   width: 10em;
   height: 9.5em;
-}
+};
 
 .hidden {
   display: none;
-}
+};
 
 .moneyarea, .newtripmoneyarea {
   text-align: center;
   font-family: $basic-font;
   font-size: 1.5em;
   text-wrap: wrap;
-}
+};
 
 .dropdown-menu, .length-select, .travelers-select, .date-select {
   display:flex;
   flex-direction: column;
   margin-top: 1em;
-}
-
-
-
-
-
-
-
-//
+};

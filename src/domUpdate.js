@@ -6,7 +6,7 @@ const updateDom = {
   },
 
   updatePastTrips(traveler, destinations) {
-    let pastData = traveler.pastTrips()
+    let pastData = traveler.pastTrips();
     let pastArea = document.querySelector('.past-trip-card');
     pastData.forEach(trip => {
       destinations.forEach(destination => {
@@ -20,7 +20,7 @@ const updateDom = {
   },
 
   updatePresentTrips(traveler, destinations) {
-    let presentData = traveler.presentTrips()
+    let presentData = traveler.presentTrips();
     let presentArea = document.querySelector('.present-trip-card');
     presentData.forEach(trip => {
       destinations.forEach(destination => {
@@ -34,7 +34,7 @@ const updateDom = {
   },
 
   updateFutureTrips(traveler, destinations) {
-    let futureData = traveler.futureTrips()
+    let futureData = traveler.futureTrips();
     let futureArea = document.querySelector('.future-trip-card');
     futureData.forEach(trip => {
       destinations.forEach(destination => {
@@ -49,7 +49,7 @@ const updateDom = {
 
   updatePendingTrips(traveler, destinations) {
     let pendingArea = document.querySelector('.pending-trip-card');
-    let pendingData = traveler.pendingTrips()
+    let pendingData = traveler.pendingTrips();
     pendingData.forEach(trip => {
       destinations.forEach(destination => {
         if (trip.destinationID === destination.id) {
@@ -64,29 +64,23 @@ const updateDom = {
   generateDestinationList(destinations) {
     let destinationList = document.querySelector('.dropdown')
     destinations.forEach(destination => {
-      destinationList.insertAdjacentHTML('beforeend', `<option value="${destination.id}">${destination.destination}</option>`)
+      destinationList.insertAdjacentHTML('beforeend', `<option value="${destination.id}">${destination.destination}</option>`);
     })
   },
 
   displayMoneySpent(traveler) {
-    let moneyArea = document.querySelector('.moneyarea')
-    let money = traveler.moneySpent
-    let roundedMonies = money.toFixed(2)
-    moneyArea.insertAdjacentHTML('beforeend', `You and your party have earned <br>${roundedMonies} gold this year!`)
+    let moneyArea = document.querySelector('.moneyarea');
+    let money = traveler.moneySpent;
+    let roundedMonies = money.toFixed(2);
+    moneyArea.insertAdjacentHTML('beforeend', `You and your party have earned <br>${roundedMonies} gold this year!`);
   },
 
   displayNewTripCost(money) {
-    let moneyArea = document.querySelector('.moneyarea')
-    let newMoneyArea = document.querySelector('.newtripmoneyarea')
-    moneyArea.classList.add('hidden')
-    newMoneyArea.insertAdjacentHTML('beforeend', `You and your party are expected <br>to earn ${money} gold for this quest!`)
+    let moneyArea = document.querySelector('.moneyarea');
+    let newMoneyArea = document.querySelector('.newtripmoneyarea');
+    moneyArea.classList.add('hidden');
+    newMoneyArea.insertAdjacentHTML('beforeend', `You and your party are expected <br>to earn ${money} gold for this quest!`);
   },
-
-  getDestinations(destinations) {
-    return
-  }
-
-
 
 }
 
