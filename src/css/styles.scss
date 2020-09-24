@@ -5,6 +5,7 @@ $basic-font: 'Chilanka';
 
 //COLOURS
 $section-background: hsla(30, 23%, 60%, 1);
+$section-outline: hsla(360, 5%, 0%, 1);
 
 .dashboard {
   display: flex;
@@ -69,7 +70,7 @@ label {
   background: $section-background;
   border-radius: 1em;
   margin-right: 1em;
-  border: 2px solid #457b9d;
+  border: 2px solid $section-outline;
 }
 
 .book-trip-area {
@@ -79,7 +80,7 @@ label {
 .card {
  width: 20em;
  height: 25em;
- border: 2px solid #457b9d;
+ border: 2px solid $section-outline;
  background: $section-background;
  margin: .5em;
  border-radius: .5em;
