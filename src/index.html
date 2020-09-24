@@ -10,11 +10,25 @@
   <body>
     <header>
       <h1>Wayshrine Guild ; Quest Registry</h1>
-      <h2 class = 'greeting'></h2>
+      <h2 class='greeting hidden'></h2>
 
     </header>
     <main>
-      <section class = 'dashboard'>
+      <section class='loginarea'>
+        <section class='login-input'>
+          <input class='usernameinput' type="text" name="" value="" placeholder="username">
+          <input class='passwordinput' type="text" name="" value="" placeholder="password">
+          <button class='login-button' type="button" name="button"><img class='button-img' src="https://64.media.tumblr.com/40bcc5f2157e81fd10d4fa4a03fec425/745c1d8e4e260de7-23/s540x810/a370aed71dd7514055ea4aa9d028da783a839ae2.png"><br>Login</button>
+        </section>
+        <section class='login-error hidden'>
+          <h2 class='message'>Adventurer, make sure you have filled out login form correctly!</h2>
+          <img alt='error knight' class='error-knight' src="https://64.media.tumblr.com/7bccd985994c4d6205df7115d856b855/1bc8f542ae83dc0f-11/s540x810/d38694d02f56c7eac2d5fe8a8ac5ee2e348cb29f.png">
+        </section>
+      </section>
+
+
+
+      <section class = 'dashboard hidden'>
 <!-- //////////////////////////////////////////////////////////////// -->
         <article class = 'left'>
           <section class = 'card past-trips'>
