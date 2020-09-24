@@ -6,6 +6,19 @@
   width: 100%;
 }
 
+.login {
+
+  border: 2px black solid;
+  height: 85vh;
+}
+
+.login-input {
+
+}
+
+.username, .password, .login-button{
+}
+
 header {
   width: 100%;
   text-align: center;
@@ -111,7 +124,7 @@ label {
   width: 5em;
 }
 
-.submit-button {
+.submit-button, .login-button {
   border: none;
   background: transparent;
   margin-top: 1em;

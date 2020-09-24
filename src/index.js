@@ -11,7 +11,7 @@ import Traveler from './Traveler.js';
 import updateDom from './domUpdate.js';
 import api from './api.js';
 
-let travelers;
+let allTravelers;
 let traveler;
 let trips;
 let destinations;
@@ -23,24 +23,64 @@ let dateInput = document.querySelector('.date-input')
 let dropdown = document.querySelector('.dropdown');
 let durationInput = document.querySelector('.duration-input');
 let travelerInput = document.querySelector('.traveler-input');
+let loginBtn = document.querySelector('.login-button');
 
-
-window.onload = onLoadData;
-
+// window.onload = loadData;
+loginBtn.addEventListener('click', validateLogin)
 submitBtn.addEventListener('click', submitTrip);
 
-function onLoadData() {
+
+function loadData(userID) {
   let promise0 = api.fetchAllTrips();
   let promise1 = api.fetchAllDestinations();
   let promise2 = api.fetchOneTraveler(userID);
-  Promise.all([promise0, promise1, promise2])
+  let promise3 = api.fetchAllTravelers();
+  Promise.all([promise0, promise1, promise2, promise3])
     .then(values => {
       trips = values[0].trips;
       destinations = values[1].destinations;
       traveler = values[2]
-      let newTraveler = generateTraveler()
+      allTravelers = values[3]
+      let newTraveler = generateTraveler(traveler)
       onLoadDisplay(newTraveler, destinations)
     })
+}
+
+function validateLogin() {
+  let loginError = document.querySelector('.login-error');
+  let usernameInput = document.querySelector('.usernameinput');
+  let passwordInput = document.querySelector('.passwordinput');
+  let dashboard = document .querySelector('.dashboard');
+  let loginArea = document.querySelector('.loginarea');
+  let greetingArea = document.querySelector('.greeting');
+
+  let travelerID = parseInt(usernameInput.value[8] + usernameInput.value[9]);
+
+  if (usernameInput.value.includes('traveler') && passwordInput.value === 'travel2020') {
+      dashboard.classList.remove('hidden')
+      loginArea.classList.add('hidden')
+      greetingArea.classList.remove('hidden')
+      loadData(travelerID)
+    } else {
+      loginError.classList.remove('hidden')
+    }
+}
+
+function getTraveler(userID) {
+  api.fetchOneTraveler(userID)
+  let traveler = generateTraveler(userID)
+  console.log(traveler)
+  return traveler
+}
+
+function generateTraveler(userID) {
+  let soloTraveler = new Traveler(traveler);
+  generateTravelerTripData(soloTraveler);
+  findYearOfDestinations(soloTraveler);
+  generateTripCosts(soloTraveler);
+  soloTraveler.id = userID
+  console.log(soloTraveler)
+  return soloTraveler
 }
 
 function onSubmitData() {
@@ -52,7 +92,8 @@ function onSubmitData() {
       trips = values[0].trips;
       destinations = values[1].destinations;
       traveler = values[2]
-      let newTraveler = generateTraveler()
+      let newTraveler = generateTraveler(30)
+      onLoadDisplay(newTraveler, destinations)
     })
 }
 
@@ -126,7 +167,6 @@ function convertTripForPost(trip) {
 
 function postTrip() {
   let postTrip = requestedTrip
-   // console.log(postTrip)
   let postRequest = {
     method: 'POST',
     headers: {
@@ -146,14 +186,6 @@ function postTrip() {
       newTraveler.travelersTrips.push(requestedTrip)
       updateDom.updatePendingTrips(newTraveler)
     })
-}
-
-function generateTraveler() {
-  let soloTraveler = new Traveler(traveler);
-  generateTravelerTripData(soloTraveler);
-  findYearOfDestinations(soloTraveler);
-  generateTripCosts(soloTraveler);
-  return soloTraveler
 }
 
 function generateTravelerTripData(traveler) {
