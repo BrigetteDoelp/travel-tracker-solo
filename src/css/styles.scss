@@ -1,3 +1,11 @@
+//TEXT STYLING
+$header-font: 'Princess Sofia';
+$title-font: 'Sue Ellen Francisco';
+$basic-font: 'Chilanka';
+
+//COLOURS
+$section-background: hsla(30, 23%, 60%, 1);
+
 .dashboard {
   display: flex;
   justify-content: space-around;
@@ -26,24 +34,24 @@ header {
 
 h1 {
   margin: none;
-  font-family: 'Princess Sofia';
+  font-family: $header-font;
   font-size: 3em;
 }
 
 h2 {
-  font-family: 'Sue Ellen Francisco';
+  font-family: $title-font;
   font-size: 2.5em;
 }
 
 h3 {
   margin: none;
   text-align: center;
-  font-family: 'Sue Ellen Francisco';
+  font-family: $title-font;
   font-size: 2.2em;
 }
 
 p {
-  font-family: 'Chilanka';
+  font-family: $basic-font;
   padding-left: .5em;
   padding-right: .5em;
   text-wrap: wrap;
@@ -52,13 +60,13 @@ p {
 
 label {
   text-align: center;
-  font-family: 'Chilanka';
+  font-family: $basic-font;
   font-size: 1em;
 }
 
 .book-trip-area {
   border: none;
-  background: hsla(30, 23%, 60%, 1);
+  background: $section-background;
   border-radius: 1em;
   margin-right: 1em;
   border: 2px solid #457b9d;
@@ -72,7 +80,7 @@ label {
  width: 20em;
  height: 25em;
  border: 2px solid #457b9d;
- background: hsla(30, 23%, 60%, 1);
+ background: $section-background;
  margin: .5em;
  border-radius: .5em;
  overflow:scroll;
@@ -154,7 +162,7 @@ label {
 
 .moneyarea, .newtripmoneyarea {
   text-align: center;
-  font-family: 'Chilanka';
+  font-family: $basic-font;
   font-size: 1.5em;
   text-wrap: wrap;
 }
