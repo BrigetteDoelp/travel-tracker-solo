@@ -176,15 +176,18 @@ function postTrip() {
   };
   let postedTrip = api.fetchNewTrip(postRequest);
   let promise0 = api.fetchOneTraveler(userID);
-  Promise.all([postedTrip, promise0])
+  let promise1 = api.fetchAllTrips()
+  Promise.all([postedTrip, promise0, promise1])
     .then(onSubmitData())
     .then(values => {
       let traveler = values[1]
+      let destinations = values[2]
       let newTraveler = generateTraveler()
       let tripCost = generateNewTripCost(requestedTrip, destinations)
       updateDom.displayNewTripCost(tripCost)
       newTraveler.travelersTrips.push(requestedTrip)
-      updateDom.updatePendingTrips(newTraveler)
+      console.log(newTraveler.travelersTrips)
+      updateDom.updatePendingTrips(newTraveler, destinations)
     })
 }
 
