@@ -11,7 +11,6 @@ let trips;
 let destinations;
 let requestedTrip;
 let generatedTraveler;
-// let userID = Math.floor((Math.random() * 50) + 1);
 let submitBtn = document.querySelector('.submit-button');
 let errorMessage = document.querySelector('.error-message');
 let dateInput = document.querySelector('.date-input')
@@ -55,13 +54,6 @@ function validateLogin() {
     } else {
       loginError.classList.remove('hidden')
     }
-}
-
-function getTraveler(userID) {
-  api.fetchOneTraveler(userID)
-  console.log(userID)
-  let traveler = generateTraveler(userID)
-  return traveler
 }
 
 function generateTraveler(traveler) {
