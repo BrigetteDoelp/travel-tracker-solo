@@ -19,7 +19,7 @@ let durationInput = document.querySelector('.duration-input');
 let travelerInput = document.querySelector('.traveler-input');
 let loginBtn = document.querySelector('.login-button');
 
-loginBtn.addEventListener('click', validateLogin)
+loginBtn.addEventListener('click', validateLogin);
 submitBtn.addEventListener('click', submitTrip);
 
 function loadData(userID) {
@@ -31,10 +31,10 @@ function loadData(userID) {
     .then(values => {
       trips = values[0].trips;
       destinations = values[1].destinations;
-      traveler = values[2]
-      allTravelers = values[3]
-      let newTraveler = generateTraveler(traveler)
-      onLoadDisplay(newTraveler, destinations)
+      traveler = values[2];
+      allTravelers = values[3];
+      let newTraveler = generateTraveler(traveler);
+      onLoadDisplay(newTraveler, destinations);
     })
 }
 
@@ -47,23 +47,23 @@ function validateLogin() {
   let greetingArea = document.querySelector('.greeting');
   let travelerID = parseInt(usernameInput.value[8] + usernameInput.value[9]);
   if (usernameInput.value.includes('traveler') && passwordInput.value === 'travel2020') {
-      dashboard.classList.remove('hidden')
-      loginArea.classList.add('hidden')
-      greetingArea.classList.remove('hidden')
-      loadData(travelerID)
+      dashboard.classList.remove('hidden');
+      loginArea.classList.add('hidden');
+      greetingArea.classList.remove('hidden');
+      loadData(travelerID);
     } else {
-      loginError.classList.remove('hidden')
+      loginError.classList.remove('hidden');
     }
 }
 
 function generateTraveler(traveler) {
   let soloTraveler = new Traveler(traveler);
-  soloTraveler.id = traveler.id
+  soloTraveler.id = traveler.id;
   generateTravelerTripData(soloTraveler);
   findYearOfDestinations(soloTraveler);
   generateTripCosts(soloTraveler);
   generatedTraveler = soloTraveler;
-  return soloTraveler
+  return soloTraveler;
 }
 
 function onSubmitData() {
@@ -74,13 +74,13 @@ function onSubmitData() {
     .then(values => {
       trips = values[0].trips;
       destinations = values[1].destinations;
-      traveler = values[2]
-      let newTraveler = generateTraveler(generatedTraveler)
+      traveler = values[2];
+      let newTraveler = generateTraveler(generatedTraveler);
     })
 }
 
 function postTrip() {
-  let postTrip = requestedTrip
+  let postTrip = requestedTrip;
   let postRequest = {
     method: 'POST',
     headers: {
@@ -94,24 +94,24 @@ function postTrip() {
   Promise.all([postedTrip, promise0, promise1])
     .then(onSubmitData())
     .then(values => {
-      let traveler = values[1]
-      let allDestinations = values[2]
-      let newTraveler = generateTraveler(traveler)
-      let tripCost = generateNewTripCost(requestedTrip, allDestinations)
-      updateDom.displayNewTripCost(tripCost)
-      newTraveler.travelersTrips.push(requestedTrip)
-      updateDom.updatePendingTrips(newTraveler, destinations)
+      let traveler = values[1];
+      let allDestinations = values[2];
+      let newTraveler = generateTraveler(traveler);
+      let tripCost = generateNewTripCost(requestedTrip, allDestinations);
+      updateDom.displayNewTripCost(tripCost);
+      newTraveler.travelersTrips.push(requestedTrip);
+      updateDom.updatePendingTrips(newTraveler, destinations);
     })
 }
 
 function submitTrip() {
   if(validateDateEntry() && validateDuration() && validateTravelers() && validateDestination() === true) {
-    let trip = generateNewTrip()
-    postTrip()
-    clearInput()
-    errorMessage.classList.add('hidden')
+    let trip = generateNewTrip();
+    postTrip();
+    clearInput();
+    errorMessage.classList.add('hidden');
   } else {
-    errorMessage.classList.remove('hidden')
+    errorMessage.classList.remove('hidden');
   }
 }
 
@@ -122,11 +122,6 @@ function clearInput() {
   dateInput.value = '';
   durationInput.value = '';
   partySizeInput.value = '';
-}
-
-function getDestinations(destinations) {
-  let allDestinations = destinations
-  return allDestinations
 }
 
 function onLoadDisplay(traveler, destinations) {
@@ -150,8 +145,8 @@ function generateNewTrip() {
     status: 'pending',
     suggestedActivities: []
   }
-  convertTripForPost(newTrip)
-  return newTrip
+  convertTripForPost(newTrip);
+  return newTrip;
 }
 
 function convertTripForPost(trip) {
@@ -175,7 +170,7 @@ function generateTravelerTripData(traveler) {
   destinations.forEach(destination => {
     travelersTrips.forEach(trip => {
       if (destination.id === trip.destinationID) {
-        travelerDestinations.push(destination)
+        travelerDestinations.push(destination);
       }
     })
   });
@@ -188,11 +183,11 @@ function findYearOfDestinations(traveler) {
   allDestinations.forEach(destination => {
     yearOfTrips.forEach(trip => {
       if (destination.id === trip.destinationID) {
-        thisYearsDestinations.push(destination)
+        thisYearsDestinations.push(destination);
       }
     })
   });
-  return thisYearsDestinations
+  return thisYearsDestinations;
 }
 
 function generateTripCosts(traveler) {
@@ -211,19 +206,19 @@ function generateTripCosts(traveler) {
     return acc
   }, 0);
   let includingAgentFee = (totalSpent * 1.1);
-  traveler.moneySpent = includingAgentFee
+  traveler.moneySpent = includingAgentFee;
 }
 
 function generateNewTripCost(passedInTrip, destinations) {
-  let trip = passedInTrip
+  let trip = passedInTrip;
   let singleDestination = destinations.destinations.find(destination => {
     return destination.id === trip.destinationID
   });
   let lodging = (singleDestination.estimatedLodgingCostPerDay * trip.duration);
   let plusFlight = (lodging + singleDestination.estimatedFlightCostPerPerson);
   let baseCostForAll = (plusFlight * trip.travelers);
-  let plusAgentFee = (baseCostForAll * 1.1)
-  let roundedTotal = plusAgentFee.toFixed(2)
+  let plusAgentFee = (baseCostForAll * 1.1);
+  let roundedTotal = plusAgentFee.toFixed(2);
   return roundedTotal
 }
 
