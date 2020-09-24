@@ -1,12 +1,6 @@
 import './css/styles.scss';
 import moment from 'moment';
 
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
 import Traveler from './Traveler.js';
 import updateDom from './domUpdate.js';
 import api from './api.js';
@@ -25,10 +19,8 @@ let durationInput = document.querySelector('.duration-input');
 let travelerInput = document.querySelector('.traveler-input');
 let loginBtn = document.querySelector('.login-button');
 
-// window.onload = loadData;
 loginBtn.addEventListener('click', validateLogin)
 submitBtn.addEventListener('click', submitTrip);
-
 
 function loadData(userID) {
   let promise0 = api.fetchAllTrips();
@@ -53,9 +45,7 @@ function validateLogin() {
   let dashboard = document .querySelector('.dashboard');
   let loginArea = document.querySelector('.loginarea');
   let greetingArea = document.querySelector('.greeting');
-
   let travelerID = parseInt(usernameInput.value[8] + usernameInput.value[9]);
-
   if (usernameInput.value.includes('traveler') && passwordInput.value === 'travel2020') {
       dashboard.classList.remove('hidden')
       loginArea.classList.add('hidden')
@@ -69,7 +59,6 @@ function validateLogin() {
 function getTraveler(userID) {
   api.fetchOneTraveler(userID)
   let traveler = generateTraveler(userID)
-  console.log(traveler)
   return traveler
 }
 
@@ -79,7 +68,6 @@ function generateTraveler(userID) {
   findYearOfDestinations(soloTraveler);
   generateTripCosts(soloTraveler);
   soloTraveler.id = userID
-  console.log(soloTraveler)
   return soloTraveler
 }
 
@@ -101,7 +89,6 @@ function clearInput() {
   let dateInput = document.getElementById('startdate');
   let durationInput = document.getElementById('duration');
   let partySizeInput = document.getElementById('partysize');
-
   dateInput.value = '';
   durationInput.value = '';
   partySizeInput.value = '';
@@ -129,8 +116,8 @@ function onLoadDisplay(traveler, destinations) {
 function submitTrip() {
   if(validateDateEntry() && validateDuration() && validateTravelers() && validateDestination() === true) {
     let trip = generateNewTrip()
-    clearInput()
     postTrip()
+    clearInput()
     errorMessage.classList.add('hidden')
   } else {
     errorMessage.classList.remove('hidden')
@@ -176,17 +163,16 @@ function postTrip() {
   };
   let postedTrip = api.fetchNewTrip(postRequest);
   let promise0 = api.fetchOneTraveler(userID);
-  let promise1 = api.fetchAllTrips()
+  let promise1 = api.fetchAllDestinations();
   Promise.all([postedTrip, promise0, promise1])
     .then(onSubmitData())
     .then(values => {
       let traveler = values[1]
-      let destinations = values[2]
+      let allDestinations = values[2]
       let newTraveler = generateTraveler()
-      let tripCost = generateNewTripCost(requestedTrip, destinations)
+      let tripCost = generateNewTripCost(requestedTrip, allDestinations)
       updateDom.displayNewTripCost(tripCost)
       newTraveler.travelersTrips.push(requestedTrip)
-      console.log(newTraveler.travelersTrips)
       updateDom.updatePendingTrips(newTraveler, destinations)
     })
 }
@@ -240,9 +226,10 @@ function generateTripCosts(traveler) {
 
 function generateNewTripCost(passedInTrip, destinations) {
   let trip = passedInTrip
-  let singleDestination = destinations.find(destination => {
+  console.log(destinations)
+  let singleDestination = destinations.destinations.find(destination => {
     return destination.id === trip.destinationID
-  })
+  });
   let lodging = (singleDestination.estimatedLodgingCostPerDay * trip.duration);
   let plusFlight = (lodging + singleDestination.estimatedFlightCostPerPerson);
   let baseCostForAll = (plusFlight * trip.travelers);
@@ -283,8 +270,4 @@ function validateDestination() {
   }
 }
 
-
-
-
-// export default generateTripCosts
 /// END OF THE JAVASCRIPT ///
