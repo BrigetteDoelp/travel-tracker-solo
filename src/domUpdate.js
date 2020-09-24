@@ -5,43 +5,59 @@ const updateDom = {
     welcome.innerHTML = `Welcome, Adventurer ${traveler.name}!`
   },
 
-  updatePastTrips(traveler) {
+  updatePastTrips(traveler, destinations) {
     let pastData = traveler.pastTrips()
     let pastArea = document.querySelector('.past-trip-card');
     pastData.forEach(trip => {
-      pastArea.innerHTML += `
-        <p class='past-trip'>Quest to ${trip.destinationID} <br>• Party Size : ${trip.travelers}<br>• Start Date: ${trip.date}<br>• Quest Duration: ${trip.duration} days.</p>
-      `
+      destinations.forEach(destination => {
+        if (trip.destinationID === destination.id) {
+          pastArea.innerHTML += `
+            <p class='past-trip'>Quest to ${destination.destination} <br>• Party Size : ${trip.travelers}<br>• Start Date: ${trip.date}<br>• Quest Duration: ${trip.duration} days.</p>
+          `
+        }
+      })
     })
   },
 
-  updatePresentTrips(traveler) {
+  updatePresentTrips(traveler, destinations) {
     let presentData = traveler.presentTrips()
     let presentArea = document.querySelector('.present-trip-card');
     presentData.forEach(trip => {
-      presentArea.innerHTML += `
-        <p class = 'present-trip'>Quest to ${trip.destinationID} <br>• Party Size : ${trip.travelers}<br>• Start Date: ${trip.date}<br>• Quest Duration: ${trip.duration} days</p>
-      `
+      destinations.forEach(destination => {
+        if (trip.destinationID === destination.id) {
+          presentArea.innerHTML += `
+            <p class = 'present-trip'>Quest to ${destination.destination} <br>• Party Size : ${trip.travelers}<br>• Start Date: ${trip.date}<br>• Quest Duration: ${trip.duration} days</p>
+          `
+        }
+      })
     })
   },
 
-  updateFutureTrips(traveler) {
+  updateFutureTrips(traveler, destinations) {
     let futureData = traveler.futureTrips()
     let futureArea = document.querySelector('.future-trip-card');
     futureData.forEach(trip => {
-      futureArea.innerHTML += `
-        <p class = 'future-trip'>You have an upcoming quest in ${trip.destinationID}.<br>It begins on ${trip.date} and will last for ${trip.duration} days. Please take this time to prepare yourself and your party accordingly.</p>
-      `
+      destinations.forEach(destination => {
+        if (trip.destinationID === destination.id) {
+          futureArea.innerHTML += `
+            <p class = 'future-trip'>You have an upcoming quest in ${destination.destination}.<br>It begins on ${trip.date} and will last for ${trip.duration} days. Please take this time to prepare yourself and your party accordingly.</p>
+          `
+        }
+      })
     })
   },
 
-  updatePendingTrips(traveler) {
-    let pendingData = traveler.pendingTrips()
+  updatePendingTrips(traveler, destinations) {
     let pendingArea = document.querySelector('.pending-trip-card');
+    let pendingData = traveler.pendingTrips()
     pendingData.forEach(trip => {
-      pendingArea.innerHTML += `
-        <p class = 'pending-trip'>Your quest to ${trip.destinationID} is pending approval of the guild master.<br> Thank you for your patience.</p>
-      `
+      destinations.forEach(destination => {
+        if (trip.destinationID === destination.id) {
+          pendingArea.innerHTML += `
+            <p class = 'pending-trip'>Your quest to ${destination.destination} is pending approval of the guild master.<br> Thank you for your patience.</p>
+          `
+        }
+      })
     })
   },
 
@@ -66,9 +82,9 @@ const updateDom = {
     newMoneyArea.insertAdjacentHTML('beforeend', `You and your party are expected <br>to earn ${money} gold for this quest!`)
   },
 
-
-
-
+  getDestinations(destinations) {
+    return
+  }
 
 
 

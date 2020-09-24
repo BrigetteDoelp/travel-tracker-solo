@@ -118,10 +118,10 @@ function getDestinations(destinations) {
 
 function onLoadDisplay(traveler, destinations) {
   updateDom.welcomeMessage(traveler);
-  updateDom.updatePastTrips(traveler);
-  updateDom.updatePresentTrips(traveler);
-  updateDom.updateFutureTrips(traveler);
-  updateDom.updatePendingTrips(traveler);
+  updateDom.updatePastTrips(traveler, destinations);
+  updateDom.updatePresentTrips(traveler, destinations);
+  updateDom.updateFutureTrips(traveler, destinations);
+  updateDom.updatePendingTrips(traveler, destinations);
   updateDom.generateDestinationList(destinations);
   updateDom.displayMoneySpent(traveler);
 }
