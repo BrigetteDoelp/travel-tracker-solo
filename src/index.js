@@ -63,7 +63,6 @@ function generateTraveler(traveler) {
   findYearOfDestinations(soloTraveler);
   generateTripCosts(soloTraveler);
   generatedTraveler = soloTraveler;
-  console.log(generatedTraveler)
   return soloTraveler
 }
 
@@ -77,8 +76,6 @@ function onSubmitData() {
       destinations = values[1].destinations;
       traveler = values[2]
       let newTraveler = generateTraveler(generatedTraveler)
-      // onLoadDisplay(newTraveler, destinations)
-      // updateDom.updatePendingTrips(newTraveler, destinations)
     })
 }
 
@@ -127,10 +124,6 @@ function clearInput() {
   partySizeInput.value = '';
 }
 
-// function fetchUserData(travelerID) {
-//   let user = api.fetchOneTraveler(travelerID)
-// }
-
 function getDestinations(destinations) {
   let allDestinations = destinations
   return allDestinations
@@ -173,8 +166,6 @@ function convertTripForPost(trip) {
     suggestedActivities: []
   }
 }
-
-
 
 function generateTravelerTripData(traveler) {
   let travelerDestinations = [];
